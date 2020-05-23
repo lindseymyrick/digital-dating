@@ -19,6 +19,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import VideoChat from '../VideoChat/VideoChat'; 
 
 import './App.css';
+import ActivityPage from '../ActivityPage/ActivityPage';
+import CocktailsSearch from '../Cocktails/CocktailsSearch/CocktailsSearch'; 
+import ApartmentHunt from '../ApartmentHunt/ApartmentHunt'; 
 
 
 class App extends Component {
@@ -41,13 +44,19 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
+            {/* Visiting localhost:3000/home will show the user a list of activities that they can choose from */}
+            <ProtectedRoute
+              exact
+              path="/home"
+              component={ActivityPage}
+            />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute
               exact
-              path="/home"
+              path="/user"
               component={UserPage}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
@@ -56,6 +65,18 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/theBar"
+              component={CocktailsSearch}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/apartmentHunt"
+              component={ApartmentHunt}
             />
 
             <Route
