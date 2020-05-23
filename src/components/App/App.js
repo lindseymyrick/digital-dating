@@ -17,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import VideoChat from '../VideoChat/VideoChat'; 
+import Test from '../Test/Test';
 
 import './App.css';
 
@@ -24,10 +25,19 @@ import './App.css';
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
+    console.log('ENV', process.env.REACT_APP_DAILY_ROOM_URL);
+    
   }
 
   render() {
     return (
+      <>
+      <header>
+        <h1>JKLDJKLSF </h1>
+          <VideoChat
+            url={`https://datingdigitally.daily.co/meet-lindsey`}
+          ></VideoChat>
+      </header>
       <Router>
         <div>
           <Nav />
@@ -61,7 +71,7 @@ class App extends Component {
             <Route
               exact
               path="/test"
-              component={VideoChat}
+              component={Test}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
@@ -69,9 +79,9 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
+      </>
   )}
 }
 
 export default connect()(App);
 
-//hello
