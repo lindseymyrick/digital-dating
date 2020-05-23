@@ -32,12 +32,6 @@ class App extends Component {
   render() {
     return (
       <>
-      <header>
-        <h1>JKLDJKLSF </h1>
-          <VideoChat
-            url={`https://datingdigitally.daily.co/meet-lindsey`}
-          ></VideoChat>
-      </header>
       <Router>
         <div>
           <Nav />
@@ -76,6 +70,9 @@ class App extends Component {
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
+            <VideoChat
+              url={`https://datingdigitally.daily.co/meet-lindsey`}
+            ></VideoChat>
           <Footer />
         </div>
       </Router>
