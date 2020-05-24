@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'; 
 
 export class CocktailsSearch extends Component {
 
     state = {
-        searchTerm: '', 
         inputText: ''
     }
 
+    //sets state.inputText with keyword that user wants to search
     handleChange = (event) => {
         console.log(event.target.value); 
         this.setState({
@@ -15,14 +16,15 @@ export class CocktailsSearch extends Component {
         })
     }
 
-    handleClick = (event, property) => {
+    //sets state.searchTerm that will be GET request to API
+    handleIconClick = (event, property) => {
         console.log('in handleClick', property );
-        this.setState({
-            ...this.state,
-            searchTerm: property
-        })
-        console.log('STATE', this.state);
-        
+        this.props.dispatch({type: 'GET_COCKTAILS', payload: property})
+    }
+
+    handleInputClick = (event, property) => {
+        console.log('in handleClick', property);
+        this.props.dispatch({ type: 'GET_COCKTAILS', payload: property })
     }
 
 
@@ -31,14 +33,14 @@ export class CocktailsSearch extends Component {
             <div>
                 <h1>Pick Your Poison </h1>
                 <input type="text" placeholder="search" onChange={this.handleChange} /> 
-                <button onClick={(event) => this.handleClick(event, this.state.inputText)}>Submit</button>
+                <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>
 
                 <div>
-                    <span onClick= {(event) => this.handleClick (event, "Tequila")}> Tequila </span>
-                    <span onClick={(event) => this.handleClick(event, "Vodka")}> Vodka </span>
-                    <span onClick={(event) => this.handleClick(event, "Gin")}> Gin </span>
-                    <span onClick={(event) => this.handleClick(event, "Scotch")}> Scotch </span>
-                    <span onClick={(event) => this.handleClick(event, "Rum")}> Rum </span>
+                    <span onClick= {(event) => this.handleIconClick (event, "Tequila")}> Tequila </span>
+                    <span onClick={(event) => this.handleIconClick(event, "Vodka")}> Vodka </span>
+                    <span onClick={(event) => this.handleIconClick(event, "Gin")}> Gin </span>
+                    <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
+                    <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
                 </div>
 
 
@@ -47,4 +49,4 @@ export class CocktailsSearch extends Component {
     }
 }
 
-export default CocktailsSearch
+export default connect() (CocktailsSearch); 
