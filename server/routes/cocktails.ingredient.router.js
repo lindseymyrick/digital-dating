@@ -5,12 +5,10 @@ require('dotenv').config();
 
 
 
-
+//get request to filter based off ingredient
 router.get('/:searchTerm', (req, res) => {
     console.log(' in /cocktail/ingredient GET', req.params.searchTerm);
     let searchTerm = req.params.searchTerm;
-    // console.log(`https://www.thecocktaildb.com/api/json/v1/${process.env.COCKTAIL_DB_API_KEY}filter.php?i=${searchTerm}`)
-    // console.log('API KEY', process.env.COCKTAIL_DB_API_KEY);
     axios.get(`https://www.thecocktaildb.com/api/json/v1/${process.env.COCKTAIL_DB_API_KEY}/filter.php?i=${searchTerm}`)
         .then(response => {
             console.log(response.data.drinks)
