@@ -20,12 +20,12 @@ export class CocktailsSearch extends Component {
     //sets state.searchTerm that will be GET request to API
     handleIconClick = (event, property) => {
         console.log('in handleClick', property );
-        this.props.dispatch({type: 'GET_COCKTAILS', payload: property})
+        this.props.dispatch({type: 'GET_INGREDIENT_COCKTAILS', payload: property})
     }
 
     handleInputClick = (event, property) => {
         console.log('in handleClick', property);
-        this.props.dispatch({ type: 'GET_COCKTAILS', payload: property })
+        this.props.dispatch({ type: 'GET_NAME_COCKTAILS', payload: property })
     }
 
 

@@ -11,7 +11,8 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const cocktailRouter = require('./routes/cocktails.router');
+const cocktailNameRouter = require('./routes/cocktails.name.router');
+const cocktailIngredientRouter = require('./routes/cocktails.ingredient.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,7 +27,8 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/cocktail', cocktailRouter);
+app.use('/api/name/cocktail', cocktailNameRouter);
+app.use('/api/ingredient/cocktail', cocktailIngredientRouter);
 
 
 // Serve static files
