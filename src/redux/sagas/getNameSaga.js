@@ -7,7 +7,13 @@ function* getCocktails(action) {
         const response = yield axios.get(`/api/name/cocktail/${action.payload}`);
       
         //put to change reduxState cocktail 
-        yield put({ type: 'SET_COCKTAILS', payload: response.data });
+        if(response.data === null) {
+            yield put({ type: 'SEND_COCKTAIL_ERROR', payload: response.data });
+        } else {
+            yield put({ type: 'SET_COCKTAILS', payload: response.data });
+        }
+
+        // yield put({ type: 'SET_COCKTAILS', payload: response.data });
     } catch (error) {
         console.log('User get request failed', error);
     }

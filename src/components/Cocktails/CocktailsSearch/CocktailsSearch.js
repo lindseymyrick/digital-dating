@@ -43,6 +43,7 @@ export class CocktailsSearch extends Component {
                     <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
                     <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
                 </div>
+                
 
                 <CocktailsResultsList/>
 

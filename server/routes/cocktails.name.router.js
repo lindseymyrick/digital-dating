@@ -12,8 +12,13 @@ router.get('/:searchTerm', (req, res) => {
   
             axios.get(`https://www.thecocktaildb.com/api/json/v1/${process.env.COCKTAIL_DB_API_KEY}/search.php?s=${searchTerm}`)
                 .then(response => {
-                    console.log('2ND API REQUEST', response.data); 
-                    res.send(response.data.drinks)
+                    // console.log('2ND API REQUEST', response.data); 
+                    // res.send(response.data.drinks)
+                    if (response.data.drinks === null) {
+                        res.send('null');
+                    } else {
+                        res.send(response.data.drinks);
+                    }
                     
                  }).catch(error => {
                     console.log('Error getting drinks based off name', error)
