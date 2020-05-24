@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
+import CocktailsResultsList from '../CocktailsResultsList/CocktailsResultsList';
 
 export class CocktailsSearch extends Component {
 
@@ -42,6 +43,8 @@ export class CocktailsSearch extends Component {
                     <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
                     <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
                 </div>
+
+                <CocktailsResultsList/>
 
 
             </div>
