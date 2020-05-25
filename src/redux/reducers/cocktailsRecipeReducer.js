@@ -1,8 +1,9 @@
 //change cocktailRecipe reduxState so that recipe pops up
-const cocktailsRecipe = (state = false, action) => {
+const cocktailsRecipe = (state = [], action) => {
     switch (action.type) {
-        case 'SEND_COCKTAIL_ERROR':
-            return !state;
+        case 'SET_COCKTAILS_RECIPE':
+            console.log('in setCocktail');
+            return action.payload;
         default:
             return state;
     }

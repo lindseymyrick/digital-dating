@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import CocktailsResultsList from '../CocktailsResultsList/CocktailsResultsList';
+import CocktailRecipe from '../CocktailRecipe/CocktailRecipe';
 
 export class CocktailsSearch extends Component {
 
@@ -30,9 +31,34 @@ export class CocktailsSearch extends Component {
 
 
     render() {
+        let listOrRecipe= <span> </span>
+        if (this.props.cocktailsRecipeShowing){
+            listOrRecipe = <CocktailRecipe /> 
+        } else {
+            listOrRecipe = 
+            <>
+                <h1>Pick Your Poison </h1>
+                <input type="text" placeholder="search" onChange={this.handleChange} />
+                <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>
+
+                <div>
+                    <span onClick={(event) => this.handleIconClick(event, "Tequila")}> Tequila </span>
+                    <span onClick={(event) => this.handleIconClick(event, "Vodka")}> Vodka </span>
+                    <span onClick={(event) => this.handleIconClick(event, "Gin")}> Gin </span>
+                    <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
+                    <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
+                </div>
+
+                <CocktailsResultsList />
+
+            </>
+            
+        }
         return (
             <div>
-                <h1>Pick Your Poison </h1>
+
+            {listOrRecipe}
+                {/* <h1>Pick Your Poison </h1>
                 <input type="text" placeholder="search" onChange={this.handleChange} /> 
                 <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>
 
@@ -45,7 +71,7 @@ export class CocktailsSearch extends Component {
                 </div>
                 
 
-                <CocktailsResultsList/>
+                <CocktailsResultsList/> */}
 
 
             </div>
@@ -53,4 +79,9 @@ export class CocktailsSearch extends Component {
     }
 }
 
-export default connect() (CocktailsSearch); 
+const reduxStateToProps = (reduxState) => {
+    return {
+        cocktailsRecipeShowing: reduxState.cocktailsRecipeShowing
+    }
+}
+export default connect(reduxStateToProps)(CocktailsSearch);

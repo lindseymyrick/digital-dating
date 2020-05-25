@@ -9,11 +9,12 @@ function* getID(action) {
         console.log('response', response)
 
         //put request to change reduxState for cocktail 
-        // if (response.data === null) {
-        //     yield put({ type: 'SEND_COCKTAIL_ERROR', payload: response.data });
-        // } else {
-            // yield put({ type: 'SET_COCKTAILS', payload: response.data });
-        // }
+        if (response.data === null) {
+            yield put({ type: 'SEND_COCKTAIL_ERROR', payload: response.data });
+        } else {
+            yield put({ type: 'SET_COCKTAILS_RECIPE', payload: response.data });
+            yield put({ type: 'SET_COCKTAILS_RECIPE_SHOWING' });
+        }
     } catch (error) {
         console.log('User get request failed', error);
     }

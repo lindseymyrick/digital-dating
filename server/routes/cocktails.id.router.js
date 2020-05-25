@@ -14,11 +14,11 @@ router.get('/:id', (req, res) => {
         .then(response => {
             console.log('response', response.data.drinks[0])
             // console.log(response.data.drinks)
-            // if (response.data.drinks === null) {
-            //     res.send('null');
-            // } else {
-            //     res.send(response.data.drinks);
-            // }
+            if (response.data.drinks === null) {
+                res.send('null');
+            } else {
+                res.send(response.data.drinks);
+            }
 
         }).catch(error => {
             console.log('Error getting drinks based off name', error)
