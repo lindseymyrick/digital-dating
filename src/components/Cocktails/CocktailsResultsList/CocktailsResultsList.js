@@ -30,13 +30,7 @@ export class CocktailsResultsList extends Component {
         return (
             <div>
                 {list}
-                    {/* <ul>
-                    {this.props.cocktails.map(cocktail => {
-                        return (
-                            <CocktailsResultsItem cocktail= {cocktail}/>
-                        )
-                    })}
-                </ul> */}
+                    
                 
                 
             </div>

@@ -13,6 +13,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const cocktailNameRouter = require('./routes/cocktails.name.router');
 const cocktailIngredientRouter = require('./routes/cocktails.ingredient.router')
+const cocktailIDRouter = require ('./routes/cocktails.id.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/name/cocktail', cocktailNameRouter);
 app.use('/api/ingredient/cocktail', cocktailIngredientRouter);
+app.use('/api/id/cocktail', cocktailIDRouter); 
 
 
 // Serve static files
