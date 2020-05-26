@@ -5,11 +5,12 @@ import CocktailRecipeIngredient from '../CocktailRecipeIngredient/CocktailRecipe
 
 
 export class CocktailRecipe extends Component {
-
+//ingredients for cocktail that was called 
     state = {
      ingredients: []   
     }
 
+    //sets state.ingredient when component mounts 
     componentDidMount(){
        this.createIngredientArray(this.props.cocktailRecipe[0], 'strIngredient' );
        
@@ -21,28 +22,23 @@ export class CocktailRecipe extends Component {
 
     createIngredientArray = (objectToSearch, keyToFind) => {
         for(let i in objectToSearch) {
+            //if the key includes strIngredient, set state.ingredient with value
             if (i.toLowerCase().indexOf(keyToFind.toLowerCase()) !== -1) {
-                // let ingredientToAdd = objectToSearch[i];
+                // if the value is not null, set state.ingredient with value
                 if(objectToSearch[i] !== null) {
                     console.log('testing objectToSearch', objectToSearch[i])
                     this.setState (prevState => ({
                         ingredients: [...prevState.ingredients, objectToSearch[i]]
                     }))
                     console.log('in loop',this.state.ingredients)
-                    // console.log('testing objectToSearch', objectToSearch[i])
-                    // let ingredientToAdd = objectToSearch[i];
-                    // this.setState({
-                    //     ...this.state.ingredients,
-                    //     ingredients: objectToSearch[i]
-                    // })
-                //  ingredientArray.push( objectToSearch[i])
                 }
             }
         }
         console.log('state: ingredients', this.state.ingredients)
-        // return ingredientArray; 
+        
     }
 
+    //if a user goes back to search, conditionally renders search component 
     handleClick= () => {
         this.props.dispatch({ type: 'SET_COCKTAILS_RECIPE_SHOWING' });
     
