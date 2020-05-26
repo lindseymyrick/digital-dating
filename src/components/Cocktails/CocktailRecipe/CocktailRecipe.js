@@ -22,10 +22,13 @@ export class CocktailRecipe extends Component {
     createIngredientArray = (objectToSearch, keyToFind) => {
         for(let i in objectToSearch) {
             if (i.toLowerCase().indexOf(keyToFind.toLowerCase()) !== -1) {
+                // let ingredientToAdd = objectToSearch[i];
                 if(objectToSearch[i] !== null) {
-                    this.setState = ({
-                        ingredients: [...this.state.ingredients, objectToSearch[i]]
-                    })
+                    console.log('testing objectToSearch', objectToSearch[i])
+                    this.setState (prevState => ({
+                        ingredients: [...prevState.ingredients, objectToSearch[i]]
+                    }))
+                    console.log('in loop',this.state.ingredients)
                     // console.log('testing objectToSearch', objectToSearch[i])
                     // let ingredientToAdd = objectToSearch[i];
                     // this.setState({
