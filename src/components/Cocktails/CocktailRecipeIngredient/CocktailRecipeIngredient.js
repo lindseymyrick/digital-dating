@@ -5,7 +5,6 @@ export class CocktailRecipeIngredient extends Component {
         return (
             <div>
                 <li> {this.props.ingredient} </li>
-                {JSON.stringify(this.props)}
             </div>
         )
     }

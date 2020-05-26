@@ -7,18 +7,23 @@ import CocktailRecipeIngredient from '../CocktailRecipeIngredient/CocktailRecipe
 export class CocktailRecipe extends Component {
 //ingredients for cocktail that was called 
     state = {
-     ingredients: []   
+     ingredients: [], 
+    }
+
+    addToFavorites = () => {
+        console.log('add to favorites');
+        this.props.dispatch({ type: 'ADD_FAVORITE', payload: this.props.cocktailRecipe[0] })
     }
 
     //sets state.ingredient when component mounts 
     componentDidMount(){
        this.createIngredientArray(this.props.cocktailRecipe[0], 'strIngredient' );
-       
+    //    this.setState({
+    //        cocktailRecipe: this.props.cocktailRecipe[0]
+    //    })
+        
     }
 
-    handleStateChange = () => {
-        console.log('handleStateChange', this.state.ingredients)
-    }
 
     createIngredientArray = (objectToSearch, keyToFind) => {
         for(let i in objectToSearch) {
@@ -50,15 +55,23 @@ export class CocktailRecipe extends Component {
             <div>
                 <h1>{this.props.cocktailRecipe[0].strDrink}</h1>
                 <img src={this.props.cocktailRecipe[0].strDrinkThumb}/>
+                <div>
+                <button onClick={this.addToFavorites}> Like </button>
+                </div>
                 <ul>
-                    {/* {ingredientArray.map(ingredient => {
+                    {this.state.ingredients.map(ingredient => {
                         return (
                             <CocktailRecipeIngredient ingredient={ingredient} />)
-                    } */}
+                    }
                     )}
                 </ul>
+
+                <div>
+                <h2> Cocktail Method </h2>
+                    <p> {this.props.cocktailRecipe[0].strInstructions} </p>
+                </div>
                 <button onClick={this.handleClick}> Back to Search</button>
-                <button onClick = {this.handleStateChange}> Handle </button>
+               
               
             </div>
         )
