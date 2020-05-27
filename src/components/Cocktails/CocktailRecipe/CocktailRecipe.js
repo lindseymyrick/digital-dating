@@ -7,9 +7,7 @@ import CocktailRecipeIngredient from '../CocktailRecipeIngredient/CocktailRecipe
 export class CocktailRecipe extends Component {
 //ingredients for cocktail that was called 
     state = {
-     ingredients: [], 
-     methods: [],
-     ingredients_methods: [],
+     ingredients_measurement: [],
      comments: ''
     }
 
@@ -20,7 +18,7 @@ export class CocktailRecipe extends Component {
         this.setState ({
             comments: promptComments
         });
-        this.props.dispatch({ type: 'ADD_FAVORITE', payload: { cocktailDetails: this.props.cocktailRecipe[0], ingredients: this.state.ingredients, methods: this.state.methods, comments: promptComments} })
+        this.props.dispatch({ type: 'ADD_FAVORITE', payload: { cocktailDetails: this.props.cocktailRecipe[0], ingredients_methods: this.state.ingredients_methods, comments: promptComments} })
        
     }
 
@@ -30,49 +28,78 @@ export class CocktailRecipe extends Component {
 
     //sets state.ingredient when component mounts 
     componentDidMount(){
-       this.createIngredientArray(this.props.cocktailRecipe[0], 'strIngredient');
-        this.createMethodArray(this.props.cocktailRecipe[0], 'strMeasure'); 
+        this.createIngredientArray(this.props.cocktailRecipe[0], 'strIngredient', 'strMeasure');
+        // this.createMethodArray(this.props.cocktailRecipe[0], 'strMeasure'); 
     }
 
-    createIngredientArray = (objectToSearch, keyToFind) => {
+    createIngredientArray = (objectToSearch, keyToFind1, keyToFind2 ) => {
+        let ingredientArray = [];
+        let measureArray = [];
         for(let i in objectToSearch) {
             //if the key includes this string, do logic
-            if (i.toLowerCase().indexOf(keyToFind.toLowerCase()) !== -1) {
+            if (i.toLowerCase().indexOf(keyToFind1.toLowerCase()) !== -1) {
                 // if the value is not null, set state with value
                 if(objectToSearch[i] !== null) {
                     
                     console.log('testing objectToSearch', objectToSearch[i]); 
-                    this.setState (prevState => ({
-                        ingredients: [...prevState.ingredients, objectToSearch[i]]
-                    }))
-                    this.props.dispatch({ type: 'SET_CURRENT_RECIPE', payload: this.state.ingredients });
-                    console.log('in loop',this.state.ingredients)
+                    
+                    ingredientArray.push(objectToSearch[i]); 
+                    // this.setState (prevState => ({
+                    //     ingredients: [...prevState.ingredients, objectToSearch[i]]
+                    // }))
+                    // this.props.dispatch({ type: 'SET_CURRENT_RECIPE', payload: this.state.ingredients });
+                    console.log('in ingredinet loop', ingredientArray)
                 }
             }
         }
-        console.log('state: ingredients', this.state.ingredients)
+        for (let i in objectToSearch) {
+            //if the key includes this string, do logic
+            if (i.toLowerCase().indexOf(keyToFind2.toLowerCase()) !== -1) {
+                // if the value is not null, set state with value
+                if (objectToSearch[i] !== null) {
+                    console.log('testing objectToSearch', objectToSearch[i]);
+                    measureArray.push(objectToSearch[i]);
+                    // this.setState(prevState => ({
+                    //     methods: [...prevState.methods, objectToSearch[i]]
+                    // }))
+                    this.props.dispatch({ type: 'SET_CURRENT_RECIPE', payload: this.state.ingredients });
+                }
+            }
+        }
+        console.log('INGREDIENT AND MEASURE ARRAY', ingredientArray, measureArray)
+        // console.log('state: ingredients', this.state.methods)
+
+        let zip = (a, b) => a.map((x, i) => [x, b[i]]);
+        for (let [a, b] of zip(ingredientArray, measureArray)) {
+            console.log(a, b)
+            let ingredientAndMethod = `${b} ${a}`;
+            console.log('ingredientMethod', ingredientAndMethod)
+            this.setState(prevState => ({
+                ingredients_measurement: [...prevState.ingredients_measurement, ingredientAndMethod]
+            }))
+        }
         
     }
 
-    createMethodArray = (objectToSearch, keyToFind) => {
-        for (let i in objectToSearch) {
-            //if the key includes this string, do logic
-            if (i.toLowerCase().indexOf(keyToFind.toLowerCase()) !== -1) {
-                // if the value is not null, set state with value
-                if (objectToSearch[i] !== null) {
+    // createMethodArray = (objectToSearch, keyToFind) => {
+    //     for (let i in objectToSearch) {
+    //         //if the key includes this string, do logic
+    //         if (i.toLowerCase().indexOf(keyToFind.toLowerCase()) !== -1) {
+    //             // if the value is not null, set state with value
+    //             if (objectToSearch[i] !== null) {
 
-                    console.log('testing objectToSearch', objectToSearch[i]);
-                    this.setState(prevState => ({
-                        methods: [...prevState.methods, objectToSearch[i]]
-                    }))
-                    this.props.dispatch({ type: 'SET_CURRENT_RECIPE', payload: this.state.ingredients });
-                    console.log('in loop', this.state.ingredients)
-                }
-            }
-        }
-        console.log('state: ingredients', this.state.methods)
+    //                 console.log('testing objectToSearch', objectToSearch[i]);
+    //                 this.setState(prevState => ({
+    //                     methods: [...prevState.methods, objectToSearch[i]]
+    //                 }))
+    //                 this.props.dispatch({ type: 'SET_CURRENT_RECIPE', payload: this.state.ingredients });
+    //                 console.log('in loop', this.state.ingredients)
+    //             }
+    //         }
+    //     }
+    //     console.log('state: ingredients', this.state.methods)
 
-    }
+    // }
 
 
     //if a user goes back to search, conditionally renders search component 
@@ -81,18 +108,18 @@ export class CocktailRecipe extends Component {
     
     }
 
-    combineIngredientsAndMethods = () => {
-        let zip = (a, b) => a.map((x, i) => [x, b[i]]);
-        for (let [a, b] of zip(this.state.ingredients, this.state.methods)) {
-            console.log(a, b)
-            let ingredientAndMethod = `${b} ${a}`;
-            console.log('ingredientMethod', ingredientAndMethod)
-            this.setState(prevState => ({
-                ingredients_methods: [...prevState.ingredients_methods, ingredientAndMethod]
-            }))
-        }
+    // combineIngredientsAndMethods = () => {
+    //     let zip = (a, b) => a.map((x, i) => [x, b[i]]);
+    //     for (let [a, b] of zip(this.state.ingredients, this.state.methods)) {
+    //         console.log(a, b)
+    //         let ingredientAndMethod = `${b} ${a}`;
+    //         console.log('ingredientMethod', ingredientAndMethod)
+    //         this.setState(prevState => ({
+    //             ingredients_methods: [...prevState.ingredients_methods, ingredientAndMethod]
+    //         }))
+    //     }
 
-    }
+    // }
 
     //hello
 
@@ -129,9 +156,9 @@ export class CocktailRecipe extends Component {
                     {this.state.ingredients.forEach((a,i) => console.log(a + this.state.methods[i]))}
                 </ul> */}
                 <ul>
-                    {this.state.ingredients.map(ingredient => {
+                    {this.state.ingredients_measurement.map(ingredient_measurement => {
                         return (
-                            <CocktailRecipeIngredient ingredient={ingredient} />)
+                            <CocktailRecipeIngredient ingredient_measurement={ingredient_measurement} />)
                     }
                     )}
                 </ul>

@@ -4,8 +4,7 @@ export class CocktailRecipeIngredient extends Component {
     render() {
         return (
             <div>
-                <li> {this.props.methods} </li>
-                <li> {this.props.ingredient} </li>
+                <li> {this.props.ingredient_measurement} </li>
             </div>
         )
     }
