@@ -8,6 +8,9 @@ const router = express.Router();
 //post request to add favorite cocktail
 router.post('/', (req, res) => {
     console.log('in cocktails/favorite/POST', req.body); 
+    
+    // const queryText = `INSERT INTO "favorite_drink" ("drink_name", "image_url", "directions", "comments")
+    // VALUES ($1, $2, $3, $4)`; 
     // const shelfItem = `INSERT INTO "item"("description", "image_url", "user_id")
     // VALUES ($1, $2, $3);`;
     // console.log('!!!!!!!!!!!', req.body)

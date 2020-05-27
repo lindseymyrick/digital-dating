@@ -35,6 +35,7 @@ app.use('/api/id/cocktail', cocktailIDRouter);
 app.use('/favorite/cocktail', favoriteCocktailRouter); 
 
 
+
 // Serve static files
 app.use(express.static('build'));
 
