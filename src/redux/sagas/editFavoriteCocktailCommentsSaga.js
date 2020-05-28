@@ -3,10 +3,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* editFavoriteCocktailComments(action) {
     try {
-        console.log('in editFavoriteCocktailCommentsSaga', action.payload);
+        console.log('in editFavoriteCocktailCommentsSaga', action.payload.comments);
 
         //get request to API based on input field 
-        const response = yield axios.post(`/favorite/cocktail`, action.payload);
+         const response = yield axios.put(`/favorite/cocktail/${action.payload.id}`, action.payload);
 
         //put request to change reduxState for cocktail 
         // if (response.data === null) {

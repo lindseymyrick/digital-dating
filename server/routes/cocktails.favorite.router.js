@@ -33,6 +33,22 @@ router.post('/', async (req, res) => {
 
     })
 
+router.put('/:id', (req, res) => {
+    console.log('REQ.PARAMS', req.params.id, 'REQ.BODY', req.body.comments);
+    const comments = req.body.comments;
+    const id = req.params.id;
+
+    let queryString = `UPDATE "favorite_drink" SET "comments" = $1 WHERE "id" = $2;`;
+
+    pool.query(queryString, [comments,  id])
+        .then((result) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        })
+}) //end put request 
+
 
     
     

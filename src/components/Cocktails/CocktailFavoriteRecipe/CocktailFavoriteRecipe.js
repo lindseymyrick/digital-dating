@@ -9,9 +9,12 @@ export class CocktailFavoriteRecipe extends Component {
 
     state = {
         editMode: false, 
-        drinkID: this.props.favoriteCocktailRecipe[0].id
+        drinkID: this.props.favoriteCocktailRecipe[0].id,
+        comments: ''
+
     }
 
+    //conditionally renders edit functionality 
     editComments = () => {
          this.setState({
             ...this.state, 
@@ -20,10 +23,19 @@ export class CocktailFavoriteRecipe extends Component {
         console.log('in editComments',this.state)
     }
 
+    //updates comments display functionality  
     submitComments = () => {
         this.setState({
             ...this.state,
             editMode: !this.state.editMode
+        })
+        this.props.dispatch({ type: 'EDIT_FAVORITE_COCKTAIL_COMMENTS', payload: { comments: this.state.comments, id: this.props.favoriteCocktailRecipe[0].id } }) 
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            ...this.state, 
+            comments: event.target.value
         })
     }
 
@@ -42,7 +54,7 @@ export class CocktailFavoriteRecipe extends Component {
              comments = <p>Comments: {this.props.favoriteCocktailRecipe[0].comments}  </p>
             editButton = <button onClick={this.editComments}> Edit </button>
         } else {
-            comments = <input placeholder={this.props.favoriteCocktailRecipe[0].comments} /> 
+            comments = <input placeholder={this.props.favoriteCocktailRecipe[0].comments} onChange= {this.handleChange} /> 
             editButton = <button onClick={this.submitComments}> Submit </button>
         }
        
