@@ -4,7 +4,28 @@ import CockTailFavoriteRecipeIngredient from '../CocktailFavoriteRecipeIngredien
 
 
 
+
 export class CocktailFavoriteRecipe extends Component {
+
+    state = {
+        editMode: false, 
+        drinkID: this.props.favoriteCocktailRecipe[0].id
+    }
+
+    editComments = () => {
+         this.setState({
+            ...this.state, 
+            editMode: !this.state.editMode
+        })
+        console.log('in editComments',this.state)
+    }
+
+    submitComments = () => {
+        this.setState({
+            ...this.state,
+            editMode: !this.state.editMode
+        })
+    }
 
     //conditionally renders the Favorite Cocktail list 
     handleClick = () => {
@@ -12,16 +33,26 @@ export class CocktailFavoriteRecipe extends Component {
         { this.props.dispatch({ type: 'SET_COCKTAILS_FAVORITE_RECIPE_SHOWING' }) }
     }
 
+  
 
     render() {
+        let comments = <span> </span>; 
+        let editButton = <span> </span>;
+        if(this.state.editMode){
+             comments = <p>Comments: {this.props.favoriteCocktailRecipe[0].comments}  </p>
+            editButton = <button onClick={this.editComments}> Edit </button>
+        } else {
+            comments = <input placeholder={this.props.favoriteCocktailRecipe[0].comments} /> 
+            editButton = <button onClick={this.submitComments}> Submit </button>
+        }
+       
         return (
             <div>
                 <h1> {this.props.favoriteCocktailRecipe[0].drink_name} </h1>
                 <img src={this.props.favoriteCocktailRecipe[0].image_url} />
-                <p> Comments: {this.props.favoriteCocktailRecipe[0].comments}</p>
-                 <div>
-                    <button onClick={this.editComments}> Edit Comments </button>
-                </div>
+                {comments}
+                {editButton}
+               
                 <p> Method: {this.props.favoriteCocktailRecipe[0].method} </p>
                 <ul>
                     {this.props.favoriteCocktailRecipe.map(ingredient_measurement => {
