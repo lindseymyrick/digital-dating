@@ -7,6 +7,7 @@ import getIngredientSaga from './getIngredientSaga';
 import getIDSaga from './getIDSaga';
 import addFavorite from './addFavoriteCocktailSaga';
 import getFavorite from './getFavoriteCocktailsSaga';
+import getIDFavoriteSaga from './getIDFavoriteSaga';
 
 
 // rootSaga is the primary saga.
@@ -26,5 +27,6 @@ export default function* rootSaga() {
     getIDSaga(),
     addFavorite(),
     getFavorite(), 
+    getIDFavoriteSaga(),
   ]);
 }

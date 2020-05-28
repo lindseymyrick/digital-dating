@@ -1,6 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 export class CocktailsFavoritesItem extends Component {
+    handleClick = () => {
+        this.props.dispatch({ type: 'GET_ID_FAVORITE_COCKTAIL', payload: this.props.cocktail.id });
+    }
+
     render() {
         return (
             <div>
@@ -15,4 +20,9 @@ export class CocktailsFavoritesItem extends Component {
     }
 }
 
-export default CocktailsFavoritesItem
+const reduxStateToProps = (reduxState) => {
+    return {
+        user: reduxState.user
+    }
+}
+export default connect(reduxStateToProps)(CocktailsFavoritesItem);
