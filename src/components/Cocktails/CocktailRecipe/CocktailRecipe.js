@@ -17,7 +17,7 @@ export class CocktailRecipe extends Component {
         this.setState ({
             comments: promptComments
         });
-        this.props.dispatch({ type: 'ADD_FAVORITE', payload: { cocktailDetails: this.props.cocktailRecipe[0], ingredients_measurement: this.state.ingredients_measurement, comments: promptComments} })
+        this.props.dispatch({ type: 'ADD_FAVORITE', payload: { cocktailDetails: this.props.cocktailRecipe[0], ingredients_measurement: this.state.ingredients_measurement, comments: promptComments, id: this.props.user.id} })
        
     }
 
@@ -28,6 +28,7 @@ export class CocktailRecipe extends Component {
     
     componentDidMount(){
         this.createIngredientArray(this.props.cocktailRecipe[0], 'strIngredient', 'strMeasure');
+        
     }
 
     //combines ingredients and measurments, and sets state 
@@ -117,7 +118,8 @@ export class CocktailRecipe extends Component {
 
 const reduxStateToProps = (reduxState) => {
     return {
-        cocktailRecipe: reduxState.cocktailsRecipe
+        cocktailRecipe: reduxState.cocktailsRecipe,
+        user: reduxState.user
     }
 }
 export default connect(reduxStateToProps)(CocktailRecipe);
