@@ -8,9 +8,10 @@ import CockTailFavoriteRecipeIngredient from '../CocktailFavoriteRecipeIngredien
 export class CocktailFavoriteRecipe extends Component {
 
     state = {
-        editMode: false, 
+        editMode: true, 
         drinkID: this.props.favoriteCocktailRecipe[0].id,
-        comments: ''
+        comments: '',
+        commentsOnPage: this.props.favoriteCocktailRecipe[0].comments 
 
     }
 
@@ -27,9 +28,10 @@ export class CocktailFavoriteRecipe extends Component {
     submitComments = () => {
         this.setState({
             ...this.state,
-            editMode: !this.state.editMode
+            editMode: !this.state.editMode,
+            commentsOnPage: this.state.comments
         })
-        this.props.dispatch({ type: 'EDIT_FAVORITE_COCKTAIL_COMMENTS', payload: { comments: this.state.comments, id: this.props.favoriteCocktailRecipe[0].id } }) 
+        this.props.dispatch({ type: 'EDIT_FAVORITE_COCKTAIL_COMMENTS', payload: { comments: this.state.comments, id: this.props.favoriteCocktailRecipe[0].id } });
     }
 
     handleChange = (event) => {
@@ -45,16 +47,16 @@ export class CocktailFavoriteRecipe extends Component {
         { this.props.dispatch({ type: 'SET_COCKTAILS_FAVORITE_RECIPE_SHOWING' }) }
     }
 
-  
+//   {this.props.favoriteCocktailRecipe[0].comments} 
 
     render() {
         let comments = <span> </span>; 
         let editButton = <span> </span>;
         if(this.state.editMode){
-             comments = <p>Comments: {this.props.favoriteCocktailRecipe[0].comments}  </p>
+             comments = <p>Comments: {this.state.commentsOnPage}  </p>
             editButton = <button onClick={this.editComments}> Edit </button>
         } else {
-            comments = <input placeholder={this.props.favoriteCocktailRecipe[0].comments} onChange= {this.handleChange} /> 
+            comments = <input placeholder={this.state.commentsOnPage} onChange= {this.handleChange} /> 
             editButton = <button onClick={this.submitComments}> Submit </button>
         }
        
@@ -90,24 +92,4 @@ const reduxStateToProps = (reduxState) => {
 
 export default connect(reduxStateToProps)(CocktailFavoriteRecipe);
 
-{/* <div>
-    <h1>{this.props.cocktailRecipe[0].strDrink}</h1>
-    <img src={this.props.cocktailRecipe[0].strDrinkThumb} />
-    <div>
-        <button onClick={this.addToFavorites}> Like </button>
-    </div>
 
-    <ul>
-        {this.state.ingredients_measurement.map(ingredient_measurement => {
-            return (
-                <CocktailRecipeIngredient ingredient_measurement={ingredient_measurement} />)
-        }
-        )}
-    </ul>
-
-    <div>
-        <h2> Cocktail Method </h2>
-        <p> {this.props.cocktailRecipe[0].strInstructions} </p>
-    </div>
-    <button onClick={this.handleClick}> Back to Search</button>
-    <button onClick={this.handleChange}> Change </button>  */}

@@ -8,12 +8,7 @@ function* editFavoriteCocktailComments(action) {
         //get request to API based on input field 
          const response = yield axios.put(`/favorite/cocktail/${action.payload.id}`, action.payload);
 
-        //put request to change reduxState for cocktail 
-        // if (response.data === null) {
-        //     yield put({ type: 'SEND_COCKTAIL_ERROR', payload: response.data });
-        // } else {
-        //     yield put({ type: 'SET_COCKTAILS', payload: response.data });
-        // }
+        yield put({ type: 'FETCH_FAVORITES'});
     } catch (error) {
         console.log('User get request failed', error);
     }
