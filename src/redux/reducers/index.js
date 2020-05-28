@@ -5,7 +5,8 @@ import user from './userReducer';
 import cocktails from './cocktailsReducer';
 import cocktailsError from './cocktailErrorReducer';
 import cocktailsRecipe from './cocktailsRecipeReducer';
-import cocktailsRecipeShowing from './cocktailsRecipeShowingReducer'
+import cocktailsRecipeShowing from './cocktailsRecipeShowingReducer';
+import cocktailsFavoriteList from './cocktailsFavoriteListReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   cocktailsError, //will set state of cocktailError 
   cocktailsRecipe, //sets recipe to show
   cocktailsRecipeShowing, //conditionally renders recipe
+  cocktailsFavoriteList, //sets list of favorite cocktails 
 
 });
 

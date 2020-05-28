@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import CocktailsResultsList from '../CocktailsResultsList/CocktailsResultsList';
 import CocktailRecipe from '../CocktailRecipe/CocktailRecipe';
+import { Link } from 'react-router-dom';
 
 export class CocktailsSearch extends Component {
 
@@ -37,6 +38,7 @@ export class CocktailsSearch extends Component {
         } else {
             listOrRecipe = 
             <>
+                <button> <Link to="favoriteCocktails"> Favorites Page </Link> </button>
                 <h1>Pick Your Poison </h1>
                 <input type="text" placeholder="search" onChange={this.handleChange} />
                 <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>

@@ -22,6 +22,7 @@ import './App.css';
 import ActivityPage from '../ActivityPage/ActivityPage';
 import CocktailsSearch from '../Cocktails/CocktailsSearch/CocktailsSearch'; 
 import ApartmentHunt from '../ApartmentHunt/ApartmentHunt'; 
+import CocktailsFavoritesList from '../Cocktails/CocktailsFavoritesList/CocktailsFavoritesList'; 
 
 
 class App extends Component {
@@ -71,6 +72,12 @@ class App extends Component {
               exact
               path="/theBar"
               component={CocktailsSearch}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/favoriteCocktails"
+              component={CocktailsFavoritesList}
             />
 
             <ProtectedRoute
