@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {ThemeProvider} from '@material-ui/styles';
+import theme from '../ui/Theme';
 import {
   HashRouter as Router,
   Route,
@@ -34,7 +36,9 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <ThemeProvider theme={theme}>
           <Nav />
+          </ThemeProvider>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -68,17 +72,22 @@ class App extends Component {
               component={InfoPage}
             />
 
+            <ThemeProvider theme={theme}>
             <ProtectedRoute
               exact
               path="/theBar"
               component={CocktailsSearch}
             />
+            </ThemeProvider>
 
+            <ThemeProvider theme={theme}>
             <ProtectedRoute
               exact
               path="/favoriteCocktails"
               component={CocktailsFavoritesList}
             />
+            </ThemeProvider>
+            
 
             <ProtectedRoute
               exact
