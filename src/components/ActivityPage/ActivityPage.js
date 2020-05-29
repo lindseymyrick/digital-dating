@@ -5,6 +5,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from "@material-ui/core"; 
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'; 
 import styles from '../ui/Theme'; 
 
@@ -44,41 +46,47 @@ export class ActivityPage extends Component {
     const {classes} = this.props; //need this for cards 
         return (
             <div>
-                <Link to="/theBar"> 
-                <Card className = {classes.root}>
-                    <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src= "images/Bar.jpeg"
-                        title="The Bar"
-                    />
-                    <CardContent>
-                        <Typography>
-                            Grab a cocktail 
-                       </Typography>
-
-                    </CardContent>
-                </Card>
-                </Link>
-
-                
-                <Link to="/apartmentHunt">
-                    <Card className={classes.root}>
+                <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing = {2}>
+         
+                <Grid item xs={4} >
+                    <Link to="/theBar"> 
+                    <Card className = {classes.root}>
                         <CardMedia
                             component="img"
                             className={classes.media}
-                            src="images/Apartment.jpeg"
-                            title= "Apartment"
+                            src= "images/Bar.jpeg"
+                            title="The Bar"
                         />
                         <CardContent>
                             <Typography>
-                                Apartment Scavenger Hunt
-                       </Typography>
+                                Grab a cocktail 
+                        </Typography>
 
                         </CardContent>
                     </Card>
-                </Link>
+                    </Link>
+                </Grid>
 
+                <Grid item xs={4} >
+                    <Link to="/apartmentHunt">
+                        <Card className={classes.root}>
+                            <CardMedia
+                                component="img"
+                                className={classes.media}
+                                src="images/Apartment.jpeg"
+                                title= "Apartment"
+                            />
+                            <CardContent>
+                                <Typography>
+                                    Apartment Scavenger Hunt
+                        </Typography>
+
+                            </CardContent>
+                        </Card>
+                    </Link>
+                </Grid>
+
+            <Grid item xs={4} >    
                 <Card className={classes.root}>
                     <CardMedia
                         component="img"
@@ -93,7 +101,9 @@ export class ActivityPage extends Component {
 
                     </CardContent>
                 </Card>
+             </Grid>
 
+             <Grid item xs={4} >    
                 <Card className={classes.root}>
                     <CardMedia
                         component="img"
@@ -108,26 +118,44 @@ export class ActivityPage extends Component {
 
                     </CardContent>
                 </Card>
-                {/* <Card className={classes.root} >
-                    <CardMedia 
-                        className = {classes.media}
-                        image = "https://unsplash.com/photos/LRx-y4bRdMA"
-                        title = "The Bar"
-                        />
-                    <CardContent>
-                       <Typography>
-                           The Bar
-                       </Typography>
+                </Grid>
 
-                    </CardContent>
-                </Card> */}
-                {/* <ul>
-                    <li> <Link to="/theBar"> Visit the Bar </Link> </li>
-                    <li> <Link to="/apartmentHunt"> Apartment Hunt  </Link> </li>
-                    <li> Activity 3  </li>
-                    <li> Activity 4  </li>
-                    <li> Activity 5  </li>
-                </ul> */}
+                <Grid item xs={4} >    
+                    <Card className={classes.root}>
+                        <CardMedia
+                            component="img"
+                            className={classes.media}
+                            src="images/Cooking.jpeg"
+                            title="Apartment"
+                        />
+                        <CardContent>
+                            <Typography>
+                                Cooking Competition
+                        </Typography>
+
+                        </CardContent>
+                    </Card>
+                </Grid>
+
+                    <Grid item xs={4} >
+                        <Card className={classes.root}>
+                            <CardMedia
+                                component="img"
+                                className={classes.media}
+                                src="images/Art.jpeg"
+                                title="Apartment"
+                            />
+                            <CardContent>
+                                <Typography>
+                                    Make Art
+                        </Typography>
+
+                            </CardContent>
+                        </Card>
+                    </Grid>
+           
+         </Grid>
+                
             </div>
         )
     }

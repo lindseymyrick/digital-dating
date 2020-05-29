@@ -4,7 +4,16 @@ const styles = { root: {
     },
     media: {
         height: 140,
-    } }
+    },
+    gridRoot: {
+        flexGrow: 1,
+        padding: 10, 
+        
+    },
+    paper: {
+        textAlign: 'center',
+    }
+ }
 
 // const blush = "#F5C7B8";
 // const cantalope =  "#FFA177"; 
