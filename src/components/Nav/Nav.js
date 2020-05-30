@@ -6,6 +6,7 @@ import './Nav.css';
 import AppBar from "@material-ui/core/useScrollTrigger"
 
 const Nav = (props) => (
+  //hello
   <div className="nav">
     <Link to="/home">
       <h2 className="nav-title">Dating Digitally</h2>
