@@ -4,6 +4,7 @@ import CocktailsResultsList from '../CocktailsResultsList/CocktailsResultsList';
 import CocktailRecipe from '../CocktailRecipe/CocktailRecipe';
 import { Link } from 'react-router-dom';
 
+
 //Material UI Imports 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -14,6 +15,7 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import styles from '../../ui/Theme';
 import { compose } from 'redux';
+import Button from '@material-ui/core/Button';
 
 export class CocktailsSearch extends Component {
 
@@ -52,7 +54,9 @@ export class CocktailsSearch extends Component {
             <>
             {/* // <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing = {2}> */}
             {/* //      <Grid item xs={4} > */}
+              
                 <button> <Link to="favoriteCocktails"> Favorites Page </Link> </button>
+
                     {/* // </Grid> */}
                     {/* //  <Grid item xs={4} > */}
                 <h1>Pick Your Poison </h1>
@@ -66,7 +70,7 @@ export class CocktailsSearch extends Component {
   
                 
                     //     <Grid item xs={4} > */}
-                    {/* <span onClick={(event) => this.handleIconClick(event, "Tequila")}> Tequila </span> */}
+                    <span onClick={(event) => this.handleIconClick(event, "Tequila")}> Tequila </span>
                 {/* <Card >
                     <CardMedia
                         component="img"
@@ -125,12 +129,10 @@ const reduxStateToProps = (reduxState) => {
     }
 }
 
-// export default withStyles(styles) (connect(reduxStateToProps) (CocktailsSearch));
 
 export default connect (reduxStateToProps) (withStyles(styles) (CocktailsSearch)); 
 
-
-// connect(reduxStateToProps)(withStyles(styles)(CocktailsSearch));
-
-// export default connect(reduxStateToProps) (CocktailsSearch); 
-// export default (withStyles(styles)(ActivityPage)); //need this for cards
+// export default compose(
+//     withStyles(styles, { name: 'CocktailsSearch' }),
+//     connect(reduxStateToProps, null)
+// )(CocktailsSearch);

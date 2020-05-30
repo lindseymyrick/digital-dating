@@ -4,9 +4,13 @@ import CocktailsFavoriteItem from '../CocktailsFavoritesItem/CocktailsFavoritesI
 import CocktailFavoriteRecipe from '../CocktailFavoriteRecipe/CocktailFavoriteRecipe';
 
 export class CocktailsFavoritesList extends Component {
+   
     componentDidMount() {
+        console.log('in componentDidMount of FavoritesList')
         this.props.dispatch({type: 'FETCH_FAVORITES' }); 
     }
+
+ 
 
     render() {
         let listOrRecipe = <span> </span>;
@@ -30,11 +34,14 @@ export class CocktailsFavoritesList extends Component {
         }
         
         return (
+            
+            
             <div>
 
             {listOrRecipe}
 
             </div>
+         
             
         )
     }
