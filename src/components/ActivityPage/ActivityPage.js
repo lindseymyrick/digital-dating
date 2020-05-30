@@ -1,38 +1,16 @@
 import React, { Component } from 'react'; 
 import { Link } from 'react-router-dom';
+
+//Material UI Imports 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from "@material-ui/core"; 
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'; 
 import styles from '../ui/Theme'; 
 
-// const useStyles = withStyles({
-//     root: {
-//         maxWidth: 345,
-//     },
-//     media: {
-//         height: 140,
-//     }, 
-// })
-
-// const styles = { root: {
-//         maxWidth: 345,
-//     },
-//     media: {
-//         height: 140,
-//     } }
-
-// const styles = {
-//     card: {
-//         maxWidth: 200,
-//         backgroundColor: 'rgba(255, 217, 154, 0.3)',
-//         marginLeft: '25px',
-//         marginTop: '25px',
-//     }
 
 export class ActivityPage extends Component {
     //takes user to an activity landing page 

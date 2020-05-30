@@ -4,6 +4,17 @@ import CocktailsResultsList from '../CocktailsResultsList/CocktailsResultsList';
 import CocktailRecipe from '../CocktailRecipe/CocktailRecipe';
 import { Link } from 'react-router-dom';
 
+//Material UI Imports 
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import { withStyles } from '@material-ui/core/styles';
+import { Typography } from "@material-ui/core";
+import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
+import styles from '../../ui/Theme';
+import { compose } from 'redux';
+
 export class CocktailsSearch extends Component {
 
     state = {
@@ -32,48 +43,73 @@ export class CocktailsSearch extends Component {
 
 
     render() {
-        let listOrRecipe= <span> </span>
+        const { classes } = this.props; //need this for cards 
+        let listOrRecipe= <span> hidden </span>
         if (this.props.cocktailsRecipeShowing){
             listOrRecipe = <CocktailRecipe /> 
         } else {
             listOrRecipe = 
             <>
+            {/* // <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing = {2}> */}
+            {/* //      <Grid item xs={4} > */}
                 <button> <Link to="favoriteCocktails"> Favorites Page </Link> </button>
+                    {/* // </Grid> */}
+                    {/* //  <Grid item xs={4} > */}
                 <h1>Pick Your Poison </h1>
+                    {/* // </Grid>
+                    // <Grid item xs={4} > */}
                 <input type="text" placeholder="search" onChange={this.handleChange} />
+                    {/* // </Grid>
+                    // <Grid item xs={4} > */}
                 <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>
+                    {/* // </Grid>
+  
+                
+                    //     <Grid item xs={4} > */}
+                    {/* <span onClick={(event) => this.handleIconClick(event, "Tequila")}> Tequila </span> */}
+                {/* <Card >
+                    <CardMedia
+                        component="img"
+                        src="images/Bar.jpeg"
+                        title="The Bar"
+                    />
+                    <CardContent>
+                        <Typography>
+                            Grab a cocktail
+                        </Typography>
 
-                <div>
-                    <span onClick={(event) => this.handleIconClick(event, "Tequila")}> Tequila </span>
+                    </CardContent>
+                </Card> */}
+                        {/* // </Grid>
+                        // <Grid item xs={4} > */}
                     <span onClick={(event) => this.handleIconClick(event, "Vodka")}> Vodka </span>
+                        {/* // </Grid>
+                        //  <Grid item xs={4} > */}
                     <span onClick={(event) => this.handleIconClick(event, "Gin")}> Gin </span>
+                        {/* // </Grid>
+                        // <Grid item xs={4} > */}
                     <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
+                        {/* // </Grid>
+                        // <Grid item xs={4} > */}
                     <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
-                </div>
-
+                        {/* // </Grid> */}
+        
+             
+               
+                {/* // <Grid item xs={4} > */}
                 <CocktailsResultsList />
+                      
+                {/* // </Grid> */}
 
+                {/* // </Grid> */}
+
+           
             </>
-            
         }
         return (
             <div>
 
             {listOrRecipe}
-                {/* <h1>Pick Your Poison </h1>
-                <input type="text" placeholder="search" onChange={this.handleChange} /> 
-                <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>
-
-                <div>
-                    <span onClick= {(event) => this.handleIconClick (event, "Tequila")}> Tequila </span>
-                    <span onClick={(event) => this.handleIconClick(event, "Vodka")}> Vodka </span>
-                    <span onClick={(event) => this.handleIconClick(event, "Gin")}> Gin </span>
-                    <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
-                    <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
-                </div>
-                
-
-                <CocktailsResultsList/> */}
 
 
             </div>
@@ -81,9 +117,20 @@ export class CocktailsSearch extends Component {
     }
 }
 
+CocktailsSearch.propTypes = { classes: PropTypes.object.isRequired };
+
 const reduxStateToProps = (reduxState) => {
     return {
         cocktailsRecipeShowing: reduxState.cocktailsRecipeShowing
     }
 }
-export default connect(reduxStateToProps)(CocktailsSearch);
+
+// export default withStyles(styles) (connect(reduxStateToProps) (CocktailsSearch));
+
+export default connect (reduxStateToProps) (withStyles(styles) (CocktailsSearch)); 
+
+
+// connect(reduxStateToProps)(withStyles(styles)(CocktailsSearch));
+
+// export default connect(reduxStateToProps) (CocktailsSearch); 
+// export default (withStyles(styles)(ActivityPage)); //need this for cards

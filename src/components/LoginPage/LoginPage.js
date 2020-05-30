@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './LoginPage.css';
 
 class LoginPage extends Component {
   state = {
@@ -31,7 +32,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+     <body>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -82,7 +83,7 @@ class LoginPage extends Component {
             Register
           </button>
         </center>
-      </div>
+      </body>
     );
   }
 }
