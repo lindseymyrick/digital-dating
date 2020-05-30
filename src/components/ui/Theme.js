@@ -12,6 +12,12 @@ const styles = { root: {
     },
     paper: {
         textAlign: 'center',
+    },
+    marginOne: {
+        marginLeft: 50
+    },
+    marginTwo: {
+        marginLeft: 60
     }
  }
 

@@ -76,28 +76,41 @@ export class CocktailsSearch extends Component {
                      <Grid item xs = {12} container >
                         <Grid item xs= {1} />
                         <Grid item xs={2} >
-                            <span onClick={(event) => this.handleIconClick(event, "Tequila")}> Tequila </span>
+                                
+                            <img src="images/Alcohol/Vodka.png" onClick={(event) => this.handleIconClick(event, "Vodka")}/> 
+                            <Typography className={classes.marginOne}>
+                                Vodka
+                            </Typography>
                         </Grid>
                         <Grid item xs={2} >
-                            <span onClick={(event) => this.handleIconClick(event, "Vodka")}> Vodka </span>
+                            <img src="images/Alcohol/Tequila.png" onClick={(event) => this.handleIconClick(event, "Tequila")} /> 
+                            <Typography className={classes.marginOne}>
+                                Tequila
+                            </Typography>
+                           
+                            
                         </Grid>
                         <Grid item xs={2} >
-                            <span onClick={(event) => this.handleIconClick(event, "Gin")}> Gin </span>
+                            <img src="images/Alcohol/Gin.png" onClick={(event) => this.handleIconClick(event, "Gin")} /> 
+                            <Typography className={classes.marginTwo}>
+                                Gin
+                            </Typography>
                         </Grid>
                         <Grid item xs={2} >
-                            <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
+                            <img src="images/Alcohol/Scotch.png" onClick={(event) => this.handleIconClick(event, "Scotch")} /> 
+                           <Typography className={classes.marginOne}>
+                                Scotch
+                            </Typography>
                         </Grid>
                         <Grid item xs={2} >
-                            <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
+                             <img src="images/Alcohol/Rum.png" onClick={(event) => this.handleIconClick(event, "Rum")} /> 
+                            <Typography className={classes.marginTwo}>
+                                Rum
+                            </Typography>
                         </Grid> 
                             
                     </Grid>   {/* end second line */}
   
-                    <Grid item xs={2} >
-
-                        <button> <Link to="favoriteCocktails"> Favorites Page </Link> </button>
-
-                    </Grid>
         
              
                
