@@ -14,6 +14,7 @@ import PropTypes from 'prop-types';
 import styles from '../../ui/Theme';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
+import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 
 
@@ -47,7 +48,7 @@ export class CocktailsResultsList extends Component {
                                 <CardMedia
                                     component="img"
                                     className={classes.media}
-                                    src={cocktail.strDrinkThumb}
+                                    image={cocktail.strDrinkThumb}
                                     title= {cocktail.strDrink}
                                 />
                                 <CardContent>
@@ -58,9 +59,14 @@ export class CocktailsResultsList extends Component {
                                 </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                <Button size="small" color="primary">
-                                    Get the Recipe
-                                    </Button>
+                                    <Button size="small" onClick={(event) => this.handleClick(event, cocktail.idDrink)}>
+                                        Get the recipe!</Button>
+                                {/* <IconButton
+          
+                                        onClick= {(event) => this.handleClick(event, cocktail.idDrink)}
+          
+                                     aria-label="show more"
+                            > </IconButton> */}
                             </CardActions>
                             </Card>
                         
