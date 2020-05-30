@@ -25,6 +25,10 @@ import ActivityPage from '../ActivityPage/ActivityPage';
 import CocktailsSearch from '../Cocktails/CocktailsSearch/CocktailsSearch'; 
 import ApartmentHunt from '../ApartmentHunt/ApartmentHunt'; 
 import CocktailsFavoritesList from '../Cocktails/CocktailsFavoritesList/CocktailsFavoritesList'; 
+import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
+import styles from '../ui/Theme'; 
+import { withStyles } from '@material-ui/core/styles';
 
 
 class App extends Component {
@@ -33,7 +37,15 @@ class App extends Component {
   }
 
   render() {
+    const {classes} = this.props; //need this for cards 
     return (
+      <>
+      <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}>
+        <VideoChat
+          url={`https://datingdigitally.daily.co/meet-lindsey`}
+        ></VideoChat>
+      </Grid>
+      
       <Router>
         <div>
       
@@ -101,16 +113,25 @@ class App extends Component {
               component={VideoChat}
             />
 
-            <VideoChat
-              url={`https://datingdigitally.daily.co/meet-lindsey`}
-            ></VideoChat>
+           
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
+        
+           {/* <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing = {2}>
+          <VideoChat
+            url={`https://datingdigitally.daily.co/meet-lindsey`}
+          ></VideoChat>
+          </Grid> */}
           <Footer />
         </div>
       </Router>
+      </>
+      
   )}
+     
 }
 
-export default connect()(App);
+ActivityPage.propTypes = { classes: PropTypes.object.isRequired }; //need this for cards 
+// export default connect()(App);
+export default connect()(withStyles(styles)(App)); 
