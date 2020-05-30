@@ -114,7 +114,7 @@ export class CocktailsSearch extends Component {
         
              
                
-                <Grid item xs={4} > 
+                <Grid item xs={12} > 
                 <CocktailsResultsList />
                       
                 </Grid> 

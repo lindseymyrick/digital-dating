@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../Cocktails.css'; 
 import { connect } from 'react-redux'; 
+import Grid from '@material-ui/core/Grid';
 
 
 export class CocktailsResultsItem extends Component {
@@ -11,13 +12,13 @@ export class CocktailsResultsItem extends Component {
 
     render() {
         return (
-            <div>
-                <li>
+           
+                <>
                     <h2> {this.props.cocktail.strDrink} </h2>
                     <img onClick={this.handleClick} alt="cocktail" src={this.props.cocktail.strDrinkThumb} />
                     
-                </li>
-            </div>
+               </>
+            
         )
     }
 }
