@@ -100,6 +100,10 @@ class App extends Component {
               path="/test"
               component={VideoChat}
             />
+
+            <VideoChat
+              url={`https://datingdigitally.daily.co/meet-lindsey`}
+            ></VideoChat>
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
