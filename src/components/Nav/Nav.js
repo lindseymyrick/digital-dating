@@ -11,6 +11,13 @@ const Nav = (props) => (
       <h2 className="nav-title">Dating Digitally</h2>
     </Link>
     <div className="nav-right">
+      {props.user.id && (
+        <>
+          <Link className="nav-link" to="/favoriteCocktails">
+            Favorite Cocktails
+          </Link>
+        </>
+      )}
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,

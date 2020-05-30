@@ -14,13 +14,17 @@ import { Typography } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import styles from '../../ui/Theme';
-import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 export class CocktailsSearch extends Component {
-
     state = {
         inputText: ''
+    }
+
+    //sets state so that the nav page will conditionally update 
+    componentDidMount() {
+        this.props.dispatch({ type: 'CHANGE_NAV_SHOW_FAVORITES'})
     }
 
     //sets state.inputText with keyword that user wants to search
@@ -52,60 +56,57 @@ export class CocktailsSearch extends Component {
         } else {
             listOrRecipe = 
             <>
-            {/* // <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing = {2}> */}
-            {/* //      <Grid item xs={4} > */}
-              
-                <button> <Link to="favoriteCocktails"> Favorites Page </Link> </button>
-
-                    {/* // </Grid> */}
-                    {/* //  <Grid item xs={4} > */}
-                <h1>Pick Your Poison </h1>
-                    {/* // </Grid>
-                    // <Grid item xs={4} > */}
-                <input type="text" placeholder="search" onChange={this.handleChange} />
-                    {/* // </Grid>
-                    // <Grid item xs={4} > */}
-                <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>
-                    {/* // </Grid>
+             <Grid container className={classes.gridRoot} spacing = {2} direction = "column">
+                 <Grid item xs={12} container >
+                     <Grid item xs = {4} />
+                     <Grid item xs = {4}>
+                        <Paper elevation={7} >
+                            <Typography>
+                                 <h1> Pick Your Poison </h1>
+                             </Typography>
+                        </Paper>
+                    </Grid>
+                        <Grid item xs={2} >
+                            <input type="text" placeholder="search" onChange={this.handleChange} />
+                        </Grid>
+                        <Grid item xs={1} >
+                            <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>
+                        </Grid>
+                     </Grid>  {/* end first line */}
+                     <Grid item xs = {12} container >
+                        <Grid item xs= {1} />
+                        <Grid item xs={2} >
+                            <span onClick={(event) => this.handleIconClick(event, "Tequila")}> Tequila </span>
+                        </Grid>
+                        <Grid item xs={2} >
+                            <span onClick={(event) => this.handleIconClick(event, "Vodka")}> Vodka </span>
+                        </Grid>
+                        <Grid item xs={2} >
+                            <span onClick={(event) => this.handleIconClick(event, "Gin")}> Gin </span>
+                        </Grid>
+                        <Grid item xs={2} >
+                            <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
+                        </Grid>
+                        <Grid item xs={2} >
+                            <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
+                        </Grid> 
+                            
+                    </Grid>   {/* end second line */}
   
-                
-                    //     <Grid item xs={4} > */}
-                    <span onClick={(event) => this.handleIconClick(event, "Tequila")}> Tequila </span>
-                {/* <Card >
-                    <CardMedia
-                        component="img"
-                        src="images/Bar.jpeg"
-                        title="The Bar"
-                    />
-                    <CardContent>
-                        <Typography>
-                            Grab a cocktail
-                        </Typography>
+                    <Grid item xs={2} >
 
-                    </CardContent>
-                </Card> */}
-                        {/* // </Grid>
-                        // <Grid item xs={4} > */}
-                    <span onClick={(event) => this.handleIconClick(event, "Vodka")}> Vodka </span>
-                        {/* // </Grid>
-                        //  <Grid item xs={4} > */}
-                    <span onClick={(event) => this.handleIconClick(event, "Gin")}> Gin </span>
-                        {/* // </Grid>
-                        // <Grid item xs={4} > */}
-                    <span onClick={(event) => this.handleIconClick(event, "Scotch")}> Scotch </span>
-                        {/* // </Grid>
-                        // <Grid item xs={4} > */}
-                    <span onClick={(event) => this.handleIconClick(event, "Rum")}> Rum </span>
-                        {/* // </Grid> */}
+                        <button> <Link to="favoriteCocktails"> Favorites Page </Link> </button>
+
+                    </Grid>
         
              
                
-                {/* // <Grid item xs={4} > */}
+                <Grid item xs={4} > 
                 <CocktailsResultsList />
                       
-                {/* // </Grid> */}
+                </Grid> 
 
-                {/* // </Grid> */}
+                </Grid>
 
            
             </>
@@ -132,7 +133,3 @@ const reduxStateToProps = (reduxState) => {
 
 export default connect (reduxStateToProps) (withStyles(styles) (CocktailsSearch)); 
 
-// export default compose(
-//     withStyles(styles, { name: 'CocktailsSearch' }),
-//     connect(reduxStateToProps, null)
-// )(CocktailsSearch);
