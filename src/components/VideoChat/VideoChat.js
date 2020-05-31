@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import DailyIframe from '@daily-co/daily-js';
+import Draggable from 'react-draggable'; 
+
 export class VideoChat extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +15,13 @@ export class VideoChat extends Component {
         this.daily = DailyIframe.wrap(this.iframeRef.current);
         this.daily.join({ url: this.props.url });
     }
+
+    eventLogger = (e: MouseEvent, data: Object) => {
+        console.log('Event: ', e);
+        console.log('Data: ', data);
+    };
     render() {
+        
         return <iframe className="Video-Frame"
             title="video call iframe"
             ref={this.iframeRef}
