@@ -59,3 +59,7 @@ input {
   min-height: 350px;
   min-width: 300px;
 }
+
+.Video-Box {
+    background-color: red; 
+}
