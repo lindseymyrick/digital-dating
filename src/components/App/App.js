@@ -40,16 +40,21 @@ class App extends Component {
     const {classes} = this.props; //need this for cards 
     return (
       <>
-      <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}>
+      {/* <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}>
         <VideoChat
           url={`https://datingdigitally.daily.co/meet-lindsey`}
         ></VideoChat>
-      </Grid>
+      </Grid> */}
       
       <Router>
         <div>
-      
+          
           <Nav />
+     
+            <VideoChat
+              url={`https://datingdigitally.daily.co/meet-lindsey`}>
+            </VideoChat>
+           
      
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
