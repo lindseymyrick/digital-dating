@@ -56,10 +56,10 @@ input {
 }
 
 .Video-Frame {
-  min-height: 350px;
-  min-width: 300px;
+  min-height: 400px;
+  min-width: 350px;
 }
 
-.Video-Box {
+/* .Video-Box {
     background-color: red; 
-}
+} */

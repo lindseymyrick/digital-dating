@@ -10,6 +10,7 @@ import cocktailsFavoriteList from './cocktailsFavoriteListReducer';
 import cocktailsFavoriteRecipeShowing from './cocktailsFavoriteRecipeShowingReducer';
 import cocktailsFavoriteRecipe from './cocktailsFavoriteRecipeReducer';
 import favoritesNavigation from './changeNavFavorites';
+import deletedCocktails from './deletedDrinksReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   cocktailsFavoriteRecipeShowing, //conditionally renders favorite cocktail recipe
   cocktailsFavoriteRecipe, //sets data for favorite cocktail
   favoritesNavigation, //sets favorites to conditionally render to nav
+  deletedCocktails, //sets deleted cocktails so they don't render to DOM
 
 });
 

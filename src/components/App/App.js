@@ -38,6 +38,12 @@ class App extends Component {
 
   render() {
     const {classes} = this.props; //need this for cards 
+    let videoChat = <span> </span>;
+    if (this.props.user.id) {
+      videoChat = <VideoChat
+        url={`https://datingdigitally.daily.co/meet-lindsey`}>
+      </VideoChat>
+    }
     return (
       <>
       {/* <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}>
@@ -51,9 +57,9 @@ class App extends Component {
           
           <Nav />
      
-            <VideoChat
+            {/* <VideoChat
               url={`https://datingdigitally.daily.co/meet-lindsey`}>
-            </VideoChat>
+            </VideoChat> */}
            
      
           <Switch>
@@ -122,6 +128,8 @@ class App extends Component {
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
+         
+            {videoChat}
         
            {/* <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing = {2}>
           <VideoChat
@@ -137,6 +145,15 @@ class App extends Component {
      
 }
 
+
+
 ActivityPage.propTypes = { classes: PropTypes.object.isRequired }; //need this for cards 
 // export default connect()(App);
-export default connect()(withStyles(styles)(App)); 
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    loginMode: state.loginMode,
+  }
+}
+export default connect(mapStateToProps)(withStyles(styles)(App)); 

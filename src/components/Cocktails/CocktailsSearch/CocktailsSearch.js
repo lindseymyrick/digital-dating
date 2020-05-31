@@ -25,6 +25,8 @@ export class CocktailsSearch extends Component {
     //sets state so that the nav page will conditionally update 
     componentDidMount() {
         this.props.dispatch({ type: 'CHANGE_NAV_SHOW_FAVORITES'})
+        this.props.dispatch({type: 'GET_DELETED_COCKTAILS'})
+    
     }
 
     //sets state.inputText with keyword that user wants to search

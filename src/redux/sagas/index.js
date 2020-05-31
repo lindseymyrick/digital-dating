@@ -9,6 +9,8 @@ import addFavorite from './addFavoriteCocktailSaga';
 import getFavorite from './getFavoriteCocktailsSaga';
 import getIDFavoriteSaga from './getIDFavoriteSaga';
 import editFavoriteCocktailComments from './editFavoriteCocktailCommentsSaga';
+import addDeletedCocktailAPI from './addDeletedCocktailAPISaga'; 
+import getDeleteCocktailAPI from './getDeletedCocktailsAPISaga'; 
 
 
 // rootSaga is the primary saga.
@@ -30,5 +32,7 @@ export default function* rootSaga() {
     getFavorite(), 
     getIDFavoriteSaga(),
     editFavoriteCocktailComments(),
+    addDeletedCocktailAPI(), 
+    getDeleteCocktailAPI(),
   ]);
 }
