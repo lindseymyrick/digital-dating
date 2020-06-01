@@ -1,0 +1,17 @@
+.recipePhoto{
+    height: 20%; 
+    width: 20%;
+    border-radius: 50%;
+}
+
+.recipe {
+    text-align: center; 
+}
+
+.directions{
+    margin: 100px; 
+}
+
+.ingredients{
+    margin: 100px; 
+}

@@ -18,6 +18,20 @@ const styles = { root: {
     },
     marginTwo: {
         marginLeft: 60
+    }, 
+    recipe: {
+        marginLeft: 60, 
+    }, 
+    directions:{
+        marginTop: 40, 
+        maxWidth: 300, 
+    }, 
+    backButton: {
+        marginTop: 40, 
+    },
+    image: {
+        height: "70 %",
+        width:" 60 %",
     }
  }
 

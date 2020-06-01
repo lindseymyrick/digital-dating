@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import CocktailRecipeIngredient from '../CocktailRecipeIngredient/CocktailRecipeIngredient';
+import './CocktailRecipe.css'; 
+import swal from '@sweetalert/with-react'
 
 
+
+//Materiaul UI import 
+import { withStyles } from '@material-ui/core/styles';
+import { Typography } from "@material-ui/core";
+import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
+import styles from '../../ui/Theme';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 
 export class CocktailRecipe extends Component {
     state = {
@@ -87,10 +99,68 @@ export class CocktailRecipe extends Component {
 
 
     render() {
+        const { classes } = this.props; //need this for cards 
+        let recipeOrComments = <span>></span> 
+
         return (
-            <div>
-                <h1>{this.props.cocktailRecipe[0].strDrink}</h1>
-                <img src={this.props.cocktailRecipe[0].strDrinkThumb}/>
+            <>
+
+            <Box className={classes.recipe}>
+                <h1>
+                    {this.props.cocktailRecipe[0].strDrink}
+                </h1>
+                <img src={this.props.cocktailRecipe[0].strDrinkThumb} className="recipePhoto" />
+                
+                <div>
+                <Button variant="outlined" onClick={this.addToFavorites}> Add To Favorites </Button>
+                </div>
+                    <Typography className={classes.directions}>
+                        Directions: {this.props.cocktailRecipe[0].strInstructions}
+                    </Typography>
+                    <Typography className= {classes.directions}>
+                        Ingredients:
+                                {this.state.ingredients_measurement.map(ingredient_measurement => {
+                        return (
+                            <CocktailRecipeIngredient ingredient_measurement={ingredient_measurement} />)
+                    }
+                    )}
+                    </Typography>
+                     
+                     <Button onClick={this.handleClick} className={classes.backButton}> Back to Search</Button>
+
+            </Box>
+            {/* <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}> 
+                <Grid item xs= {12} />
+                <Grid item xs={12} />
+                <Grid item xs={12} />
+                <Grid item xs= {3}/>
+
+                <Grid item xs={3}>
+                    <Typography>
+                     Directions: {this.props.cocktailRecipe[0].strInstructions}
+                    </Typography>
+                </Grid>
+
+                <Grid xs={2} />
+
+                <Grid xs={3}>
+                    <Typography>
+                        Ingredients:
+                                {this.state.ingredients_measurement.map(ingredient_measurement => {
+                                    return (
+                                        <CocktailRecipeIngredient ingredient_measurement={ingredient_measurement} />)
+                                }
+                                )}
+                    </Typography>
+                </Grid>
+
+                <Grid xs={2} />
+            </Grid> */}
+
+               
+
+                {/* <h1>{this.props.cocktailRecipe[0].strDrink}</h1> */}
+                {/* <img src={this.props.cocktailRecipe[0].strDrinkThumb} className="recipePhoto" />
                 <div>
                 <button onClick={this.addToFavorites}> Like </button>
                 </div>
@@ -109,12 +179,14 @@ export class CocktailRecipe extends Component {
                 </div>
                 <button onClick={this.handleClick}> Back to Search</button>
                 <button onClick = {this.handleChange}> Change </button> 
-               
+                */}
               
-            </div>
+           </>
         )
     }
 }
+
+CocktailRecipe.propTypes = { classes: PropTypes.object.isRequired };
 
 const reduxStateToProps = (reduxState) => {
     return {
@@ -122,4 +194,4 @@ const reduxStateToProps = (reduxState) => {
         user: reduxState.user
     }
 }
-export default connect(reduxStateToProps)(CocktailRecipe);
+export default connect (reduxStateToProps) (withStyles(styles) (CocktailRecipe)); 
