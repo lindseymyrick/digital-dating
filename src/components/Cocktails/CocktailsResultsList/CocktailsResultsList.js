@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CocktailsResultsItem from '../CocktailsResultsItem/CocktailsResultsItem';
+// import CocktailsResultsItem from '../CocktailsResultsItem/CocktailsResultsItem';
 import {connect} from 'react-redux'; 
 
 //material UI imports 
