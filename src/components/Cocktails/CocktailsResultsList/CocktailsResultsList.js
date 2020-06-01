@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 import styles from '../../ui/Theme';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 
 
@@ -28,12 +27,12 @@ export class CocktailsResultsList extends Component {
     }
 
     handleClick = (event, property) => {
-        console.log('in handleClick', property);
+        // console.log('in handleClick', property);
         this.props.dispatch({ type: 'GET_ID_COCKTAIL', payload: property });
     }
 
     handleDelete = (event, property) => {
-        console.log('in handleDelete', property ); 
+        // console.log('in handleDelete', property ); 
         this.props.dispatch({type: 'ADD_DELETED_COCKTAIL_API', payload: property});
     }
 
@@ -44,59 +43,62 @@ export class CocktailsResultsList extends Component {
         if (this.props.error){
             this.errorAlert();
                 } else {
-                    
+            // let filteredCocktails = this.props.cocktails.filter(cocktail => cocktail.idDrink !== this.props.deletedCocktails[i].api_id); 
             list = (
                
                 <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}>             
                    {this.props.cocktails.map(cocktail => {
-                        // this.props.deletedCocktails.map(deletedCocktail => {
-                        //    if (cocktail.idDrink !== deletedCocktail.api_id) {
+                    //    console.log('in map', cocktail); 
+                      for(let i =0; i < this.props.deletedCocktails.length; i++) {
+                          console.log('in for loop deleted cocktails', cocktail, this.props.deletedCocktails[i]); 
+                          //if they equal return something invisible 
+                           if ( cocktail.idDrink == this.props.deletedCocktails[i].api_id) {
+                               console.log('Cocktail ID', cocktail.idDrink, 'Deleted Cocktail', this.props.deletedCocktails[i].api_id );
                                return (
-                                   <Grid item xs={2} >
-                                       <Card className={classes.root}>
-                                           <CardActionArea>
-                                               <CardMedia
-                                                   component="img"
-                                                   className={classes.media}
-                                                   image={cocktail.strDrinkThumb}
-                                                   title={cocktail.strDrink}
-                                               />
-                                               <CardContent>
-                                                   <Typography>
-                                                       {cocktail.strDrink}
-                                                   </Typography>
+                                   null 
+                               ) //end return 
+                           } //end conditional 
+                       } //end for loop
+                       return (
+                           <Grid item xs={2} >
+                               <Card className={classes.root}>
+                                   <CardActionArea>
+                                       <CardMedia
+                                           component="img"
+                                           className={classes.media}
+                                           image={cocktail.strDrinkThumb}
+                                           title={cocktail.strDrink}
+                                       />
+                                       <CardContent>
+                                           <Typography>
+                                               {cocktail.strDrink}
+                                           </Typography>
 
-                                               </CardContent>
-                                           </CardActionArea>
-                                           <CardActions>
-                                               <Button size="small" onClick={(event) => this.handleClick(event, cocktail.idDrink)}>
-                                                   See more!</Button>
-                                               <Button size="small" onClick={(event) => this.handleDelete(event, { id: cocktail.idDrink, name: cocktail.strDrink })}>
-                                                   Delete</Button>
+                                       </CardContent>
+                                   </CardActionArea>
+                                   <CardActions>
+                                       <Button size="small" onClick={(event) => this.handleClick(event, cocktail.idDrink)}>
+                                           See more!</Button>
+                                       <Button size="small" onClick={(event) => this.handleDelete(event, { id: cocktail.idDrink, name: cocktail.strDrink })}>
+                                           Delete</Button>
 
-                                           </CardActions>
-                                       </Card>
+                                   </CardActions>
+                               </Card>
 
 
-                                   </Grid>
+                           </Grid>
 
-                               )
-                        //    }
+                       )
+                     
                         
-                      // })
-                    })}
+                   
+                    } ) }  
+                   
+                    
                  </Grid>
              
-           )
-        }
-            //  list = (<ul>
-            //     {this.props.cocktails.map(cocktail => {
-            //         return (
-            //             <CocktailsResultsItem cocktail={cocktail} />
-            //         )
-            //     })}
-            // </ul>)
-            //     }
+           ) //end list 
+        } //end if there is no error 
         
 
         return (
@@ -106,9 +108,9 @@ export class CocktailsResultsList extends Component {
                 
                 
             </div>
-        )
-    }
-}
+        ) //end return of JSX
+    } //end render
+} //end component 
 
 
 CocktailsResultsList.propTypes = { classes: PropTypes.object.isRequired };

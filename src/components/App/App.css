@@ -63,3 +63,8 @@ input {
 /* .Video-Box {
     background-color: red; 
 } */
+
+img {
+  height: 70%;
+  width: 70%;
+}
