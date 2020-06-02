@@ -45,9 +45,15 @@ class App extends Component {
     //   </VideoChat>
     // }
 
-    if (this.props.user.id) {
+    // if (this.props.user.id) {
+    //   videoChat = <VideoChat
+    //     url={`https://datingdigitally.daily.co/meet-lindsey`}>
+    //   </VideoChat>
+    // }
+
+    if (this.props.roomURL.id) {
       videoChat = <VideoChat
-        url={`https://datingdigitally.daily.co/meet-lindsey`}>
+        url={this.props.roomURL.api_url}>
       </VideoChat>
     }
     return (
@@ -150,6 +156,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     loginMode: state.loginMode,
+    roomURL: state.roomURL
   }
 }
 export default connect(mapStateToProps)(withStyles(styles)(App)); 

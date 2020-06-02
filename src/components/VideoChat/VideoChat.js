@@ -59,7 +59,7 @@ export class VideoChat extends Component {
             <>
          <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}> 
         <Draggable {...dragHandlers}>
-            <div className= "Video-Box">
+            <div>
         <iframe className="Video-Frame"
             title="video call iframe"
             ref={this.iframeRef}
