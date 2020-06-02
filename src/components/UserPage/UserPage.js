@@ -13,9 +13,26 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 // const UserPage = (props) => (
 export class UserPage extends Component {
 
+  state = {
+    roomToJoin: ''
+  }
+
+  handleChange = (event) => {
+    console.log(event.target.value); 
+    this.setState ({
+      ...this.state, 
+      roomToJoin: event.target.value
+    })
+  }
+
   handleDateCreation = () => {
     console.log('handle date creation'); 
     this.props.dispatch({ type: 'GET_ROOM_URL' })
+  }
+  
+  handleDateJoin = () => {
+     console.log('handle date join'); 
+    this.props.dispatch({ type: 'JOIN_ROOM_URL', payload: this.state.roomToJoin })
   }
 
   render(){
@@ -32,8 +49,9 @@ export class UserPage extends Component {
     <div>
 
     <button onClick={this.handleDateCreation}> Create a date </button>
-
-    <button> Join a date </button>
+    <input onChange= {this.handleChange}/>
+     <button onClick={this.handleDateJoin}> Join a date </button>
+   
 
     </div>
   </div>

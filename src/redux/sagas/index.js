@@ -12,6 +12,7 @@ import editFavoriteCocktailComments from './editFavoriteCocktailCommentsSaga';
 import addDeletedCocktailAPI from './addDeletedCocktailAPISaga'; 
 import getDeleteCocktailAPI from './getDeletedCocktailsAPISaga'; 
 import getRoom from './getRoomUrlSaga';
+import joinRoom from './joinRoomUrlSaga';
 
 
 // rootSaga is the primary saga.
@@ -36,5 +37,6 @@ export default function* rootSaga() {
     addDeletedCocktailAPI(), 
     getDeleteCocktailAPI(),
     getRoom(), 
+    joinRoom(), 
   ]);
 }
