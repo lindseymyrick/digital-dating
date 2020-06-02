@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'; 
 import CocktailRecipeIngredient from '../CocktailRecipeIngredient/CocktailRecipeIngredient';
 import './CocktailRecipe.css'; 
-import swal from '@sweetalert/with-react'
+import swal from "sweetalert";
 
 
 
@@ -19,17 +20,39 @@ import Box from '@material-ui/core/Box';
 export class CocktailRecipe extends Component {
     state = {
      ingredients_measurement: [],
-     comments: ''
+     comments: '', 
+     show: false 
     }
+
+    // changeText = (notes) => {
+    //     let text = notes.target.value; 
+    //     this.setState({
+    //         ...this.state, 
+    //         comments: notes 
+    //     })
+
+    //     swal.setActionValue(text);
+    // }
 
     addToFavorites = (event) => {
         console.log('add to favorites');
-        let promptComments = prompt('Please enter comments');
-        console.log('promptComments', promptComments);
-        this.setState ({
-            comments: promptComments
-        });
-        this.props.dispatch({ type: 'ADD_FAVORITE', payload: { cocktailDetails: this.props.cocktailRecipe[0], ingredients_measurement: this.state.ingredients_measurement, comments: promptComments, id: this.props.user.id} })
+        swal("Add your comments", {
+            content: "input",
+        })
+            .then((value) => {
+                swal(`Visit your favorite cocktails to find this winner again!`);
+                this.setState({
+                    ...this.state,
+                    comments: value
+                })
+                 this.props.dispatch({ type: 'ADD_FAVORITE', payload: { cocktailDetails: this.props.cocktailRecipe[0], ingredients_measurement: this.state.ingredients_measurement, comments: value, id: this.props.user.id} })
+            });
+        // let promptComments = prompt('Please enter comments');
+        // console.log('promptComments', promptComments);
+        // this.setState ({
+        //     comments: promptComments
+        // });
+       
        
     }
 
@@ -105,6 +128,14 @@ export class CocktailRecipe extends Component {
         return (
             <>
 
+            {/* <input 
+            value={this.state.comments}
+            onChange={this.changeText} 
+            /> */}
+
+
+        
+
             <Box className={classes.recipe}>
                 <h1>
                     {this.props.cocktailRecipe[0].strDrink}
@@ -112,7 +143,7 @@ export class CocktailRecipe extends Component {
                 <img src={this.props.cocktailRecipe[0].strDrinkThumb} className="recipePhoto" />
                 
                 <div>
-                <Button variant="outlined" onClick={this.addToFavorites}> Add To Favorites </Button>
+                <Button variant="outlined" onClick={(this.addToFavorites)}> Add To Favorites </Button>
                 </div>
                     <Typography className={classes.directions}>
                         Directions: {this.props.cocktailRecipe[0].strInstructions}
@@ -129,62 +160,35 @@ export class CocktailRecipe extends Component {
                      <Button onClick={this.handleClick} className={classes.backButton}> Back to Search</Button>
 
             </Box>
-            {/* <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}> 
-                <Grid item xs= {12} />
-                <Grid item xs={12} />
-                <Grid item xs={12} />
-                <Grid item xs= {3}/>
 
-                <Grid item xs={3}>
-                    <Typography>
-                     Directions: {this.props.cocktailRecipe[0].strInstructions}
-                    </Typography>
-                </Grid>
-
-                <Grid xs={2} />
-
-                <Grid xs={3}>
-                    <Typography>
-                        Ingredients:
-                                {this.state.ingredients_measurement.map(ingredient_measurement => {
-                                    return (
-                                        <CocktailRecipeIngredient ingredient_measurement={ingredient_measurement} />)
-                                }
-                                )}
-                    </Typography>
-                </Grid>
-
-                <Grid xs={2} />
-            </Grid> */}
-
-               
-
-                {/* <h1>{this.props.cocktailRecipe[0].strDrink}</h1> */}
-                {/* <img src={this.props.cocktailRecipe[0].strDrinkThumb} className="recipePhoto" />
-                <div>
-                <button onClick={this.addToFavorites}> Like </button>
-                </div>
-               
-                <ul>
-                    {this.state.ingredients_measurement.map(ingredient_measurement => {
-                        return (
-                            <CocktailRecipeIngredient ingredient_measurement={ingredient_measurement} />)
-                    }
-                    )}
-                </ul>
-
-                <div>
-                <h2> Cocktail Method </h2>
-                    <p> {this.props.cocktailRecipe[0].strInstructions} </p>
-                </div>
-                <button onClick={this.handleClick}> Back to Search</button>
-                <button onClick = {this.handleChange}> Change </button> 
-                */}
+            
               
            </>
         )
     }
 }
+
+// We want to retrieve MyInput as a pure DOM node: 
+// let wrapper = document.createElement('div');
+// ReactDOM.render(<CocktailRecipe />, wrapper);
+// let el = wrapper.firstChild;
+
+// swal({
+//     text: "Write something here:",
+//     content: el,
+//     buttons: {
+//         confirm: {
+//             /*
+//              * We need to initialize the value of the button to
+//              * an empty string instead of "true":
+//              */
+//             value: ''
+//         },
+//     },
+// })
+//     .then((value) => {
+//         swal(`You typed: ${value}`);
+//     });
 
 CocktailRecipe.propTypes = { classes: PropTypes.object.isRequired };
 
@@ -195,3 +199,8 @@ const reduxStateToProps = (reduxState) => {
     }
 }
 export default connect (reduxStateToProps) (withStyles(styles) (CocktailRecipe)); 
+
+
+
+
+
