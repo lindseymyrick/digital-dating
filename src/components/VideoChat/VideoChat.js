@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import styles from '../ui/Theme';
 import { withStyles } from '@material-ui/core/styles';
+require('dotenv').config();
+
 
 
 export class VideoChat extends Component {

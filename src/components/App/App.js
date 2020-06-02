@@ -38,28 +38,28 @@ class App extends Component {
 
   render() {
     const {classes} = this.props; //need this for cards 
-    // let videoChat = <span> </span>;
+    let videoChat = <span> </span>;
     // if (this.props.user.id) {
     //   videoChat = <VideoChat
     //     url={`https://datingdigitally.daily.co/meet-lindsey`}>
     //   </VideoChat>
     // }
+
+    if (this.props.user.id) {
+      videoChat = <VideoChat
+        url={`https://datingdigitally.daily.co/meet-lindsey`}>
+      </VideoChat>
+    }
     return (
       <>
-      {/* <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}>
-        <VideoChat
-          url={`https://datingdigitally.daily.co/meet-lindsey`}
-        ></VideoChat>
-      </Grid> */}
+     
       
       <Router>
         <div>
           
           <Nav />
      
-            {/* <VideoChat
-              url={`https://datingdigitally.daily.co/meet-lindsey`}>
-            </VideoChat> */}
+           
            
      
           <Switch>
@@ -129,7 +129,7 @@ class App extends Component {
             <Route render={() => <h1>404</h1>} />
           </Switch>
          
-            {/* {videoChat} */}
+            {videoChat}
         
           
           <Footer />

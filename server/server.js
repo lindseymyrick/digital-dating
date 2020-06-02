@@ -16,6 +16,7 @@ const cocktailIngredientRouter = require('./routes/cocktails.ingredient.router')
 const cocktailIDRouter = require ('./routes/cocktails.id.router');
 const favoriteCocktailRouter = require ('./routes/cocktails.favorite.router'); 
 const deletedCocktailsRouter = require ('./routes/cocktails.deleted.router');
+const roomRouter = require ('./routes/room.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -35,6 +36,7 @@ app.use('/api/ingredient/cocktail', cocktailIngredientRouter);
 app.use('/api/id/cocktail', cocktailIDRouter); 
 app.use('/favorite/cocktail', favoriteCocktailRouter); 
 app.use('/deleted/cocktail', deletedCocktailsRouter); 
+app.use('/room', roomRouter)
 
 
 
