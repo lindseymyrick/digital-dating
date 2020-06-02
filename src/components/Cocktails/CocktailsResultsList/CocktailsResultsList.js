@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import CocktailsResultsItem from '../CocktailsResultsItem/CocktailsResultsItem';
 import {connect} from 'react-redux'; 
+import swal from "sweetalert";
 
 //material UI imports 
 //Material UI Imports 
@@ -33,7 +34,20 @@ export class CocktailsResultsList extends Component {
 
     handleDelete = (event, property) => {
         // console.log('in handleDelete', property ); 
+        swal({
+            title: "Are you sure you want to delete this cocktail?",
+            text: "If deleted, you will no longer have access to this recipe!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((willDelete) => {
+            if(willDelete){
         this.props.dispatch({type: 'ADD_DELETED_COCKTAIL_API', payload: property});
+        swal("This cocktail has been deleted!", { icon: "success" });
+            } else {
+                swal("Phew, cocktail not deleted!");
+            }
+         } )
     }
 
     render() {
