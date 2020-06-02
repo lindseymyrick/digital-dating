@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CockTailFavoriteRecipeIngredient from '../CocktailFavoriteRecipeIngredient/CocktailFavoriteRecipeIngredient'; 
+import './CocktailFavoriteRecipe.css'; 
+
 
 
 
@@ -63,7 +65,7 @@ export class CocktailFavoriteRecipe extends Component {
         return (
             <div>
                 <h1> {this.props.favoriteCocktailRecipe[0].drink_name} </h1>
-                <img src={this.props.favoriteCocktailRecipe[0].image_url} />
+                <img src={this.props.favoriteCocktailRecipe[0].image_url} className="recipePhoto" />
                 {comments}
                 {editButton}
                
