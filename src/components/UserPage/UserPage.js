@@ -26,6 +26,7 @@ export class UserPage extends Component {
       Welcome, { this.props.user.username }!
     </h1>
     <p>Your ID is: {this.props.user.id}</p>
+    <p> Your room id is {this.props.roomURL.id} </p>
     <LogOutButton className="log-in" />
 
     <div>
@@ -45,6 +46,7 @@ export class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = state => ({
   user: state.user,
+  roomURL: state.roomURL
 });
 
 // this allows us to use <App /> in index.js
