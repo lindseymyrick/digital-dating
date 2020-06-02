@@ -43,6 +43,18 @@ router.get('/', async (req, res) => {
 
 })
 
+router.get('/:id', async (req, res) => {
+    let queryText = `SELECT * FROM "date_rooms" WHERE id = $1;  `;
+    pool.query(queryText, [req.params.id])
+        .then((response) => {
+            res.send(response.rows[0])
+        }).catch((error) => {
+            console.log('error in join room router.get', error);
+            res.sendStatus(200); // For testing only, can be removed
+        })
+
+})
+
 
 
 
