@@ -6,18 +6,22 @@ const router = express.Router();
 
 
 
-router.get('/', async (req, res) => {
+router.get('/create/:username', async (req, res) => {
 
    
     const getRoomUrl = await pool.connect();
     try {
         await getRoomUrl.query('BEGIN');
+        console.log(req.params, req.user.username);
+        let partnerUsername = req.params.username; 
         let queryText = `SELECT * FROM "date_rooms" WHERE in_use = false LIMIT 1; `;
        let result = await getRoomUrl.query(queryText);
         const roomID = result.rows[0].id;
-        console.log('result.rows', result.rows[0])
-        let subQuery = `UPDATE "date_rooms" SET "in_use" = true WHERE "id" = ${roomID}`;
-        await getRoomUrl.query(subQuery);
+        let subQuery = `UPDATE "date_rooms" SET "in_use" = true WHERE "id" = $1`;
+        await getRoomUrl.query(subQuery, [roomID]);
+        let subQueryTwo = `INSERT INTO "user_rooms" ("username_user", "username_partner", "room_id") 
+        VALUES ($1, $2, $3);`;
+        await getRoomUrl.query(subQueryTwo, [req.user.username, req.params.username, roomID]);
 
         await getRoomUrl.query('COMMIT');
        
@@ -31,9 +35,9 @@ router.get('/', async (req, res) => {
 
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/join/', async (req, res) => {
     let queryText = `SELECT * FROM "date_rooms" WHERE id = $1;  `;
-    pool.query(queryText, [req.params.id])
+    pool.query(queryText, [req.user.id])
         .then((response) => {
             res.send(response.rows[0])
         }).catch((error) => {

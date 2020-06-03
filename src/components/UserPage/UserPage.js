@@ -15,9 +15,8 @@ export class UserPage extends Component {
 
   state = {
     roomToJoin: '', 
-    // dateToInvite: ''
+    dateToInvite: ''
   } 
-  //hello
 
   handleChange = (event) => {
     console.log(event.target.value); 
@@ -27,17 +26,17 @@ export class UserPage extends Component {
     })
   }
 
-  // handleDateInvitation = (event) => {
-  //   console.log(event.target.value);
-  //   this.setState({
-  //     ...this.state,
-  //     roomToJoin: event.target.value
-  //   })
-  // }
+  handleDateInvitation = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      ...this.state,
+      dateToInvite: event.target.value
+    })
+  }
 
   handleDateCreation = () => {
     console.log('handle date creation'); 
-    this.props.dispatch({ type: 'GET_ROOM_URL' })
+    this.props.dispatch({ type: 'GET_ROOM_URL', payload: this.state.dateToInvite })
   }
   
   handleDateJoin = () => {
@@ -54,6 +53,7 @@ export class UserPage extends Component {
     </h1>
     <p>Your ID is: {this.props.user.id}</p>
     <p> Your room id is {this.props.roomURL.id} </p>
+    <p> Your password is {this.props.roomURL.password} </p>
     <LogOutButton className="log-in" />
 
     <div>

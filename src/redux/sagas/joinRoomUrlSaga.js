@@ -4,7 +4,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* joinRoom(action) {
     try {
         //get request to API based on input field 
-        const response = yield axios.get(`/room/${action.payload}`);
+        const response = yield axios.get(`/room/join/`);
         
 
         console.log(response.data)
