@@ -14,7 +14,8 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 export class UserPage extends Component {
 
   state = {
-    roomToJoin: ''
+    roomToJoin: '', 
+    // dateToInvite: ''
   }
 
   handleChange = (event) => {
@@ -24,6 +25,14 @@ export class UserPage extends Component {
       roomToJoin: event.target.value
     })
   }
+
+  // handleDateInvitation = (event) => {
+  //   console.log(event.target.value);
+  //   this.setState({
+  //     ...this.state,
+  //     roomToJoin: event.target.value
+  //   })
+  // }
 
   handleDateCreation = () => {
     console.log('handle date creation'); 
@@ -47,10 +56,14 @@ export class UserPage extends Component {
     <LogOutButton className="log-in" />
 
     <div>
-
+    
+    <input onChange={this.handleDateInvitation} />
     <button onClick={this.handleDateCreation}> Create a date </button>
+          
+        <div>
     <input onChange= {this.handleChange}/>
      <button onClick={this.handleDateJoin}> Join a date </button>
+        </div>
    
 
     </div>
