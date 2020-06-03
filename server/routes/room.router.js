@@ -36,9 +36,10 @@ router.get('/create/:username', async (req, res) => {
 })
 
 router.get('/join/', async (req, res) => {
-    let queryText = `SELECT * FROM "date_rooms" WHERE id = $1;  `;
-    pool.query(queryText, [req.user.id])
+    let queryText = `SELECT * FROM "user_rooms" WHERE "username_partner" = $1;  `;
+    pool.query(queryText, [req.user.username])
         .then((response) => {
+            console.log(response.rows)
             res.send(response.rows[0])
         }).catch((error) => {
             console.log('error in join room router.get', error);

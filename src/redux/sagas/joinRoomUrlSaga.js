@@ -8,7 +8,7 @@ function* joinRoom(action) {
         
 
         console.log(response.data)
-        yield put({ type: 'SET_ROOM_URL', payload: response.data });
+        yield put({ type: 'SET_ALL_ROOMS', payload: response.data });
 
     } catch (error) {
         console.log('User get request failed', error);

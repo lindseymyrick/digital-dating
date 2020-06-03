@@ -12,6 +12,7 @@ import cocktailsFavoriteRecipe from './cocktailsFavoriteRecipeReducer';
 import favoritesNavigation from './changeNavFavorites';
 import deletedCocktails from './deletedDrinksReducer';
 import roomURL from './roomUrlReducer';
+import allRoomsURL from './allRoomsUrlReducer'; 
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   favoritesNavigation, //sets favorites to conditionally render to nav
   deletedCocktails, //sets deleted cocktails so they don't render to DOM
   roomURL, // sets URL for date room 
+  allRoomsURL, //sets all available rooms 
 
 });
 

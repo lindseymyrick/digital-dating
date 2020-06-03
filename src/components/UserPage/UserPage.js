@@ -18,6 +18,10 @@ export class UserPage extends Component {
     dateToInvite: ''
   } 
 
+  componentDidMount() {
+    this.handleDateJoin()
+  }
+
   handleChange = (event) => {
     console.log(event.target.value); 
     this.setState ({
@@ -32,6 +36,10 @@ export class UserPage extends Component {
       ...this.state,
       dateToInvite: event.target.value
     })
+  }
+
+  getAllRoomInvites = () => {
+
   }
 
   handleDateCreation = () => {
@@ -51,20 +59,23 @@ export class UserPage extends Component {
     <h1 id="welcome">
       Welcome, { this.props.user.username }!
     </h1>
-    <p>Your ID is: {this.props.user.id}</p>
+    {/* <p>Your ID is: {this.props.user.id}</p> */}
+    <p> You have been invited to a date with </p>
     <p> Your room id is {this.props.roomURL.id} </p>
-    <p> Your password is {this.props.roomURL.password} </p>
+    <p> {this.props.allRoomsURL.username_user} has invited you to a date. Would you like to join? </p>
+        <button onClick={this.handleDateJoin}> Join Now </button>
+    <div>
     <LogOutButton className="log-in" />
-
+      </div>
     <div>
     
     <input onChange={this.handleDateInvitation} />
     <button onClick={this.handleDateCreation}> Create a date </button>
           
-        <div>
+        {/* <div>
     <input onChange= {this.handleChange}/>
      <button onClick={this.handleDateJoin}> Join a date </button>
-        </div>
+        </div> */}
    
 
     </div>
@@ -78,7 +89,8 @@ export class UserPage extends Component {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = state => ({
   user: state.user,
-  roomURL: state.roomURL
+  roomURL: state.roomURL,
+  allRoomsURL: state.allRoomsURL
 });
 
 // this allows us to use <App /> in index.js
