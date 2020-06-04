@@ -19,7 +19,7 @@ export class UserPage extends Component {
   } 
 
   componentDidMount() {
-    this.handleDateJoin()
+    this.getAllRoomInvites()
   }
 
   handleChange = (event) => {
@@ -38,8 +38,8 @@ export class UserPage extends Component {
     })
   }
 
-  getAllRoomInvites = () => {
-
+  handleDateJoin = (event, property) => {
+    this.props.dispatch({ type: 'JOIN_ROOM', payload: property })
   }
 
   handleDateCreation = () => {
@@ -47,9 +47,9 @@ export class UserPage extends Component {
     this.props.dispatch({ type: 'GET_ROOM_URL', payload: this.state.dateToInvite })
   }
   
-  handleDateJoin = () => {
+  getAllRoomInvites = () => {
      console.log('handle date join'); 
-    this.props.dispatch({ type: 'JOIN_ROOM_URL', payload: this.state.roomToJoin })
+    this.props.dispatch({ type: 'GET_ROOM_URLS', payload: this.state.roomToJoin })
   }
 
   render(){
@@ -60,13 +60,21 @@ export class UserPage extends Component {
       Welcome, { this.props.user.username }!
     </h1>
     {/* <p>Your ID is: {this.props.user.id}</p> */}
-    <p> You have been invited to a date with </p>
-    <p> Your room id is {this.props.roomURL.id} </p>
-    <p> {this.props.allRoomsURL.username_user} has invited you to a date. Would you like to join? </p>
-        <button onClick={this.handleDateJoin}> Join Now </button>
-    <div>
+    {/* <p> You have been invited to a date with </p>
+    <p> Your room id is {this.props.roomURL.id} </p> */}
+    {this.props.allRoomsURL.map(room => {
+      return(
+        <>
+        <p> {room.username_user} has invited you to a date. Would you like to join? </p>
+          <button onClick={(event) => this.handleDateJoin(event, room.room_id)}> Join Now </button>
+        </>
+      )
+    }
+
+    )}
+    {/* <div>
     <LogOutButton className="log-in" />
-      </div>
+      </div> */}
     <div>
     
     <input onChange={this.handleDateInvitation} />
