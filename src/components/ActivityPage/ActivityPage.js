@@ -13,6 +13,7 @@ import styles from '../ui/Theme';
 
 
 export class ActivityPage extends Component {
+   
     //takes user to an activity landing page 
     handleClick = () => {
         console.log('in handleClick');

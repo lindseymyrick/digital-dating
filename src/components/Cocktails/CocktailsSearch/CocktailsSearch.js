@@ -25,13 +25,13 @@ export class CocktailsSearch extends Component {
     //sets state so that the nav page will conditionally update 
     componentDidMount() {
         this.props.dispatch({ type: 'CHANGE_NAV_SHOW_FAVORITES'})
-        this.props.dispatch({type: 'GET_DELETED_COCKTAILS'})
+        this.props.dispatch({type: 'GET_DELETED_COCKTAILS'}); 
+       
     
     }
 
     //sets state.inputText with keyword that user wants to search
     handleChange = (event) => {
-        console.log(event.target.value); 
         this.setState({
             ...this.state,
             inputText: event.target.value
@@ -40,12 +40,10 @@ export class CocktailsSearch extends Component {
 
     //sets state.searchTerm that will be GET request to API
     handleIconClick = (event, property) => {
-        console.log('in handleClick', property );
         this.props.dispatch({type: 'GET_INGREDIENT_COCKTAILS', payload: property})
     }
 
     handleInputClick = (event, property) => {
-        console.log('in handleClick', property);
         this.props.dispatch({ type: 'GET_NAME_COCKTAILS', payload: property })
     }
 
@@ -128,6 +126,7 @@ export class CocktailsSearch extends Component {
         }
         return (
             <div>
+                
 
             {listOrRecipe}
 

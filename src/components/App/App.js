@@ -32,24 +32,19 @@ import { withStyles } from '@material-ui/core/styles';
 
 
 class App extends Component {
+
+  // history = () => {
+  //   console.log(this.props.history.location)
+  // }
+ 
   componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+    this.props.dispatch({type: 'FETCH_USER'}); 
   }
 
   render() {
     const {classes} = this.props; //need this for cards 
     let videoChat = <span> </span>;
-    // if (this.props.user.id) {
-    //   videoChat = <VideoChat
-    //     url={`https://datingdigitally.daily.co/meet-lindsey`}>
-    //   </VideoChat>
-    // }
-
-    // if (this.props.user.id) {
-    //   videoChat = <VideoChat
-    //     url={`https://datingdigitally.daily.co/meet-lindsey`}>
-    //   </VideoChat>
-    // }
+   
 
     if (this.props.roomURL.id) {
       videoChat = <VideoChat
@@ -59,7 +54,8 @@ class App extends Component {
     return (
       <>
      
-      
+      <button onClick= {this.history}>HISTORY </button> 
+
       <Router>
         <div>
           
