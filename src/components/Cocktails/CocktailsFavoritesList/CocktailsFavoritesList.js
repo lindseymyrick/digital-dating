@@ -28,6 +28,11 @@ export class CocktailsFavoritesList extends Component {
         this.props.dispatch({ type: 'GET_ID_FAVORITE_COCKTAIL', payload: property });
     }
 
+    handleDelete = (event, property) => {
+        console.log('in deleteFavorite', property)
+        this.props.dispatch({type: 'DELETE_FAVORITE_COCKTAIL', payload: property})
+    }
+
  
 
     render() {
@@ -74,7 +79,7 @@ export class CocktailsFavoritesList extends Component {
                                     <CardActions>
                                         <Button size="small" onClick={(event) => this.handleClick(event, cocktail.id)}>
                                             See more!</Button>
-                                        <Button size="small" onClick={(event) => this.handleDelete(event, { id: cocktail.id, name: cocktail.drink_name })}>
+                                        <Button size="small" onClick={(event) => this.handleDelete(event, cocktail.id )}>
                                             Delete</Button>
 
                                     </CardActions>

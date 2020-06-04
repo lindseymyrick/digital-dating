@@ -26,6 +26,11 @@ export class CocktailFavoriteRecipe extends Component {
         console.log('in editComments',this.state)
     }
 
+    handleDelete = (event, property) => {
+        console.log('in deleteFavorite', property)
+        this.props.dispatch({ type: 'DELETE_FAVORITE_COCKTAIL', payload: property })
+    }
+
     //updates comments display functionality  
     submitComments = () => {
         this.setState({
@@ -68,6 +73,7 @@ export class CocktailFavoriteRecipe extends Component {
                 <img src={this.props.favoriteCocktailRecipe[0].image_url} className="recipePhoto" />
                 {comments}
                 {editButton}
+                <button onClick={(event) => this.handleDelete(event, this.props.favoriteCocktailRecipe[0].id)}> Delete cocktail </button>
                
                 <p> Method: {this.props.favoriteCocktailRecipe[0].method} </p>
                 <ul>

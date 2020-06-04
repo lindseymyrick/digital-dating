@@ -14,6 +14,7 @@ import getDeleteCocktailAPI from './getDeletedCocktailsAPISaga';
 import getRoom from './getRoomUrlSaga';
 import getRoomInvites from './getRoomInvitesSaga';
 import joinRoom from './joinRoomsSaga';
+import deleteFavorite from './deleteFavoriteCocktailSaga'; 
 
 
 // rootSaga is the primary saga.
@@ -40,5 +41,6 @@ export default function* rootSaga() {
     getRoom(), 
     getRoomInvites(), 
     joinRoom(), 
+    deleteFavorite(), 
   ]);
 }

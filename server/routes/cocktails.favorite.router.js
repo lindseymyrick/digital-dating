@@ -77,6 +77,28 @@ router.get('/recipe/:id', (req, res) => {
         })
 });
 
+router.delete('/:id', async (req, res) => {
+
+    let id = req.params.id;
+    console.log(`in router delete`, id); 
+     const deleteRecipe = await pool.connect();
+    try {
+        await deleteRecipe.query('BEGIN');
+        let queryText = `DELETE FROM "favorite_drink" WHERE "id" = $1;`;
+        await deleteRecipe.query(queryText, [id]);
+        let subQuery = `DELETE FROM "favorite_drink_ingredients" WHERE "recipe_id" = $1`
+        await deleteRecipe.query(subQuery, [id])
+        await deleteRecipe.query('COMMIT');
+        res.sendStatus(200);
+    } catch (err) {
+        await deleteRecipe.query('ROLLBACK');
+        throw err;
+    } finally {
+        deleteRecipe.release();
+    }
+
+});
+
 module.exports = router;
 
 

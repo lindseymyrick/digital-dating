@@ -25,12 +25,7 @@ router.post('/', async (req, res) => {
         await addDeletedCocktail.query(queryText, [id, title]);
         let subQuery = `SELECT * FROM "deleted_drinks";`;
         const result = await addDeletedCocktail.query(subQuery);
-
-
-        // await Promise.all(req.body.ingredients_measurement.map(item => {
-        //     let = subQuery = `INSERT INTO "favorite_drink_ingredients" ("recipe_id", "ingredient_measurement") VALUES ($1, $2);`;
-        //     addDeletedCocktail.query(subQuery, [newRecipeId, item])
-        // }))
+        
         await addDeletedCocktail.query('COMMIT');
         console.log(result.rows); 
         res.send(result.rows);
