@@ -32,6 +32,9 @@ const styles = { root: {
     image: {
         height: "70 %",
         width:" 60 %",
+    }, 
+    marginLeft: {
+        marginLeft: 70,
     }
  }
 
