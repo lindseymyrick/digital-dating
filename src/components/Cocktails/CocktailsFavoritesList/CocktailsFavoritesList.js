@@ -48,11 +48,11 @@ export class CocktailsFavoritesList extends Component {
                     <Grid item xs={12} container >
                         <Grid item xs={4} />
                         <Grid item xs={4}>
-                            <Paper elevation={7} >
+                            {/* <Paper elevation={7} > */}
                                 <Typography>
                                     <h1> Favorite Cocktails </h1>
                                 </Typography>
-                            </Paper>
+                            {/* </Paper> */}
                         </Grid>
                         <Grid item xs={4} />
                     </Grid>

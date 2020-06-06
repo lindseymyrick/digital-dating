@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import styles from '../ui/Theme';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 require('dotenv').config();
 
 
@@ -65,8 +66,10 @@ export class VideoChat extends Component {
             ref={this.iframeRef}
             allow="camera; microphone; fullscreen"
         ></iframe>
-        <button> Drag Me </button>
+            <div>
+        <Button variant='outlined' className={classes.video}> Video Chat</Button>
             </div>
+         </div>
             </Draggable>
             </Grid>
             </>

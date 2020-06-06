@@ -14,8 +14,9 @@ import { Typography } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import styles from '../../ui/Theme';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import SearchIcon from '@material-ui/icons/Search';
+
 
 export class CocktailsSearch extends Component {
     state = {
@@ -60,17 +61,19 @@ export class CocktailsSearch extends Component {
                  <Grid item xs={12} container >
                      <Grid item xs = {4} />
                      <Grid item xs = {4}>
-                        <Paper elevation={7} >
+                       
                             <Typography>
                                  <h1> Pick Your Poison </h1>
                              </Typography>
-                        </Paper>
+                        
                     </Grid>
-                        <Grid item xs={2} >
-                            <input type="text" placeholder="search" onChange={this.handleChange} />
+                        <Grid item xs={2} className={classes.searchBar} >
+                            {/* <input type="text" placeholder="search" onChange={this.handleChange} /> */}
+                            <TextField onChange={this.handleChange} /> <SearchIcon onClick={(event) => this.handleInputClick(event, this.state.inputText)}></SearchIcon>
+                           
                         </Grid>
                         <Grid item xs={1} >
-                            <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button>
+                            {/* <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button> */}
                         </Grid>
                      </Grid>  {/* end first line */}
                      <Grid item xs = {12} container >

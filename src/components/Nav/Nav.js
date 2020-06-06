@@ -10,14 +10,6 @@ import './Nav.css';
 export class Nav extends Component {
 
 
-  componentDidMount () {
-
-  }
-
-    // changeNav = () => {
-    //   this.props.dispatch({ type: 'CHANGE_NAV_SHOW_FAVORITES' })
-    // }
-
 
 
   render () {
@@ -37,11 +29,9 @@ export class Nav extends Component {
 
     return (
       <div className="nav">
-        {JSON.stringify(this.props.history.location)}
-        {JSON.stringify(currentLocation)}
-        {JSON.stringify(this.props.match.params)}
+       
         <Link to="/home">
-          <h2 className="nav-title">Dating Digitally</h2>
+          <h2 className="nav-title">DigiDating</h2>
         </Link>
         <div className="nav-right">
           {additionalLinks}

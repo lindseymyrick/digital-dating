@@ -35,6 +35,12 @@ const styles = { root: {
     }, 
     marginLeft: {
         marginLeft: 70,
+    },
+    searchBar: {
+        marginTop: 30
+    },
+    video: {
+        marginLeft: 120
     }
  }
 

@@ -33,10 +33,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 class App extends Component {
 
-  // history = () => {
-  //   console.log(this.props.history.location)
-  // }
- 
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'}); 
   }
@@ -54,7 +50,7 @@ class App extends Component {
     return (
       <>
      
-      <button onClick= {this.history}>HISTORY </button> 
+    
 
       <Router>
         <div>

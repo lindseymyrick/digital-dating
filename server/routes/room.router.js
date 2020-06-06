@@ -16,6 +16,7 @@ router.get('/create/:username', async (req, res) => {
         let partnerUsername = req.params.username; 
         let queryText = `SELECT * FROM "date_rooms" WHERE in_use = false LIMIT 1; `;
        let result = await getRoomUrl.query(queryText);
+       console.log(result.rows)
         const roomID = result.rows[0].id;
         let subQuery = `UPDATE "date_rooms" SET "in_use" = true WHERE "id" = $1`;
         await getRoomUrl.query(subQuery, [roomID]);
