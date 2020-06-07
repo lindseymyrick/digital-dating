@@ -41,6 +41,19 @@ const styles = { root: {
     },
     video: {
         marginLeft: 120
+    }, 
+    button: {
+        marginLeft: 20
+    },
+    buttonTwo: {
+        marginLeft: 40
+    }, 
+    userPage: {
+        display: 'inline',
+        marginLeft: 20
+    }, 
+    textField: {
+        marginLeft: 20
     }
  }
 

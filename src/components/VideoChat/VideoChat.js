@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import styles from '../ui/Theme';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+
 require('dotenv').config();
 
 
@@ -77,4 +78,7 @@ export class VideoChat extends Component {
         )
     }
 }
+
+VideoChat.propTypes = { classes: PropTypes.object.isRequired };
+
 export default (withStyles(styles)(VideoChat)); ;

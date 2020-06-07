@@ -74,11 +74,11 @@ export class CocktailFavoriteRecipe extends Component {
         let editButton = <span> </span>;
         if(this.state.editMode){
             comments = <Typography className={classes.marginLeft}>  {this.state.commentsOnPage}  </Typography>
-            editButton = <Button variant = "outlined" onClick={this.editComments}> Edit </Button>
+            editButton = <Button className={classes.button} variant = "outlined" onClick={this.editComments}> Edit </Button>
         } else {
            
             comments = <div><TextField className={classes.marginLeft} defaultValue={this.state.commentsOnPage} onChange={this.handleChange} /> </div> 
-              editButton =  <Button variant = "outlined" onClick={this.submitComments}> Submit </Button>
+            editButton = <Button className={classes.button} variant = "outlined" onClick={this.submitComments}> Submit </Button>
        
         }
        

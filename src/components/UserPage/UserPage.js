@@ -2,6 +2,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../ui/Theme';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+
+
 // const dotenv = require('dotenv');
 // import dotenv from 'dotenv'; 
 // dotenv.config(); 
@@ -53,10 +61,11 @@ export class UserPage extends Component {
   }
 
   render(){
+    const { classes } = this.props; //need this for cards 
 
     return(
   <div>
-    <h1 id="welcome">
+    <h1  id="welcome">
       Welcome, { this.props.user.username }!
     </h1>
     {/* <p>Your ID is: {this.props.user.id}</p> */}
@@ -64,10 +73,10 @@ export class UserPage extends Component {
     <p> Your room id is {this.props.roomURL.id} </p> */}
     {this.props.allRoomsURL.map(room => {
       return(
-        <>
-        <p> {room.username_user} has invited you to a date. Would you like to join? </p>
-          <button onClick={(event) => this.handleDateJoin(event, room.room_id)}> Join Now </button>
-        </>
+        <div>
+          <Typography className={classes.userPage}> {room.username_user} has invited you to a date. Would you like to join? </Typography>
+          <Button variant="outlined" onClick={(event) => this.handleDateJoin(event, room.room_id)}> Join Now </Button>
+        </div>
       )
     }
 
@@ -77,8 +86,8 @@ export class UserPage extends Component {
       </div> */}
     <div>
     
-    <input onChange={this.handleDateInvitation} />
-    <button onClick={this.handleDateCreation}> Create a date </button>
+          <TextField className={classes.textField} onChange={this.handleDateInvitation} />
+    <Button variant="outlined" onClick={this.handleDateCreation}> Create a date </Button>
           
         {/* <div>
     <input onChange= {this.handleChange}/>
@@ -101,5 +110,7 @@ const mapStateToProps = state => ({
   allRoomsURL: state.allRoomsURL
 });
 
+UserPage.propTypes = { classes: PropTypes.object.isRequired };
+
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(withStyles(styles)(UserPage));

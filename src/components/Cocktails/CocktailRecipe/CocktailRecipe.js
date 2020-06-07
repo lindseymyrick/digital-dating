@@ -143,7 +143,7 @@ export class CocktailRecipe extends Component {
                 <img src={this.props.cocktailRecipe[0].strDrinkThumb} className="recipePhoto" />
                 
                 <div>
-                <Button variant="outlined" onClick={(this.addToFavorites)}> Add To Favorites </Button>
+                <Button className={classes.buttonTwo} variant="outlined" onClick={(this.addToFavorites)}> Add To Favorites </Button>
                 </div>
                     <Typography className={classes.directions}>
                         Directions: {this.props.cocktailRecipe[0].strInstructions}
@@ -157,7 +157,7 @@ export class CocktailRecipe extends Component {
                     )}
                     </Typography>
                      
-                     <Button onClick={this.handleClick} className={classes.backButton}> Back to Search</Button>
+                     <Button variant= "outlined" onClick={this.handleClick} className={classes.buttonTwo}> Back to Search</Button>
 
             </Box>
 
