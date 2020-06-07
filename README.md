@@ -10,14 +10,11 @@ In the future, more activities will be added to DigiDating.
 
 ## Screenshots
 
-![Image of Activity Page]
-(public/images/ActivityPage.png)
+![Image of Activity Page](public/images/ActivityPage.png)
 
-![Image of Cocktail Search Page]
-(public/images/CocktailSearch.png)
+![Image of Cocktail Search Page](public/images/CocktailSearch.png)
 
-![Image of Cocktail Results Page]
-(public/images/CocktailResults.png)
+![Image of Cocktail Results Page](public/images/CocktailResults.png)
 
 
 ## Prerequisites
