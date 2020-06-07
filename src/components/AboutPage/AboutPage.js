@@ -9,7 +9,9 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        Dating Digitally is a full-stack web application that allows users to connect and grow relationships virtually. 
+        It replicates traditional, in-person dating experiences that may be impossible due to distance or factors like 
+        social distancing. 
       </p>
     </div>
   </div>

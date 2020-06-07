@@ -13,16 +13,8 @@ import styles from '../ui/Theme';
 
 
 export class ActivityPage extends Component {
-   
-    //takes user to an activity landing page 
-    handleClick = () => {
-        console.log('in handleClick');
-        
-    }
-
-
     render() {
-    const {classes} = this.props; //need this for cards 
+    const {classes} = this.props; //Material UI
         return (
             <div>
                 <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing = {2}>

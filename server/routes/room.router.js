@@ -1,11 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-// const { rejectUnauthenticated } = require(‘../’); TO DO 
 
 
 
-
+//get request to get available room for chat; set selected room to in use 
 router.get('/create/:username', async (req, res) => {
 
    
@@ -36,6 +35,7 @@ router.get('/create/:username', async (req, res) => {
 
 })
 
+//get request to join room from invitation based on partner name 
 router.get('/invite', async (req, res) => {
     let queryText = `SELECT * FROM "user_rooms" WHERE "username_partner" = $1;  `;
     pool.query(queryText, [req.user.username])
@@ -49,6 +49,7 @@ router.get('/invite', async (req, res) => {
 
 })
 
+//get request to join room based on id number
 router.get('/join/:id', async (req, res) => {
     let queryText = `SELECT * FROM "date_rooms" WHERE "id" = $1;  `;
     pool.query(queryText, [req.params.id])

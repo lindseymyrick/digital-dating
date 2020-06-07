@@ -26,21 +26,21 @@ import deleteFavorite from './deleteFavoriteCocktailSaga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
-    loginSaga(),
-    registrationSaga(),
+    loginSaga(), //login request
+    registrationSaga(), //registration request
     userSaga(),
     getNameSaga(), 
     getIngredientSaga(),
-    getIDSaga(),
-    addFavorite(),
-    getFavorite(), 
-    getIDFavoriteSaga(),
-    editFavoriteCocktailComments(),
-    addDeletedCocktailAPI(), 
-    getDeleteCocktailAPI(),
-    getRoom(), 
-    getRoomInvites(), 
-    joinRoom(), 
-    deleteFavorite(), 
+    getIDSaga(), 
+    addFavorite(), //add to favorite table
+    getFavorite(), //get all favorite cocktails (basic information)
+    getIDFavoriteSaga(), //get all information for chosen favorite cocktail
+    editFavoriteCocktailComments(), //edit comments
+    addDeletedCocktailAPI(), //add cocktail to deleted table (API)
+    getDeleteCocktailAPI(), //get deleted cocktail information (API)
+    getRoom(), //get empty room
+    getRoomInvites(), //get room url based on invite
+    joinRoom(),  //join chat room
+    deleteFavorite(), //delete favorite cocktail 
   ]);
 }

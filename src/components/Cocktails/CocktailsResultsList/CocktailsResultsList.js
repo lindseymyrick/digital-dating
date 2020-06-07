@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-// import CocktailsResultsItem from '../CocktailsResultsItem/CocktailsResultsItem';
 import {connect} from 'react-redux'; 
 import swal from "sweetalert";
 
-//material UI imports 
 //Material UI Imports 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -22,18 +20,19 @@ import Button from '@material-ui/core/Button';
 
 export class CocktailsResultsList extends Component {
 
+    //if user searches for a cocktail not in database
      errorAlert = () => {
         alert('Sorry we do not have that cocktail!'); 
         this.props.dispatch({ type: 'SEND_COCKTAIL_ERROR' })
     }
 
+    //gets recipe information based on ID
     handleClick = (event, property) => {
-        // console.log('in handleClick', property);
         this.props.dispatch({ type: 'GET_ID_COCKTAIL', payload: property });
     }
 
+    //adds cocktail to deleted database
     handleDelete = (event, property) => {
-        // console.log('in handleDelete', property ); 
         swal({
             title: "Are you sure you want to delete this cocktail?",
             text: "If deleted, you will no longer have access to this recipe!",
@@ -57,12 +56,10 @@ export class CocktailsResultsList extends Component {
         if (this.props.error){
             this.errorAlert();
                 } else {
-            // let filteredCocktails = this.props.cocktails.filter(cocktail => cocktail.idDrink !== this.props.deletedCocktails[i].api_id); 
             list = (
                
                 <Grid container direction="row" className={classes.gridRoot} alignItems="top" spacing={2}>             
                    {this.props.cocktails.map(cocktail => {
-                    //    console.log('in map', cocktail); 
                       for(let i =0; i < this.props.deletedCocktails.length; i++) {
                           console.log('in for loop deleted cocktails', cocktail, this.props.deletedCocktails[i]); 
                           //if they equal return something invisible 
@@ -102,9 +99,7 @@ export class CocktailsResultsList extends Component {
 
                            </Grid>
 
-                       )
-                     
-                        
+                       ) 
                    
                     } ) }  
                    
@@ -139,7 +134,6 @@ const reduxStateToProps = (reduxState) => {
 
 export default connect(reduxStateToProps)(withStyles(styles)(CocktailsResultsList)); 
 
-// export default connect(reduxStateToProps)(CocktailsResultsList);
 
 
 

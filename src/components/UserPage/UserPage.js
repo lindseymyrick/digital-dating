@@ -68,9 +68,7 @@ export class UserPage extends Component {
     <h1  id="welcome">
       Welcome, { this.props.user.username }!
     </h1>
-    {/* <p>Your ID is: {this.props.user.id}</p> */}
-    {/* <p> You have been invited to a date with </p>
-    <p> Your room id is {this.props.roomURL.id} </p> */}
+  
     {this.props.allRoomsURL.map(room => {
       return(
         <div>
@@ -81,18 +79,13 @@ export class UserPage extends Component {
     }
 
     )}
-    {/* <div>
-    <LogOutButton className="log-in" />
-      </div> */}
+  
     <div>
     
           <TextField className={classes.textField} onChange={this.handleDateInvitation} />
     <Button variant="outlined" onClick={this.handleDateCreation}> Create a date </Button>
           
-        {/* <div>
-    <input onChange= {this.handleChange}/>
-     <button onClick={this.handleDateJoin}> Join a date </button>
-        </div> */}
+       
    
 
     </div>

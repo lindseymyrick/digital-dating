@@ -39,18 +39,19 @@ export class CocktailsSearch extends Component {
         })
     }
 
-    //sets state.searchTerm that will be GET request to API
+    //gets cocktail recipe by ingredient
     handleIconClick = (event, property) => {
         this.props.dispatch({type: 'GET_INGREDIENT_COCKTAILS', payload: property})
     }
 
+    //gets cocktail recipe by name
     handleInputClick = (event, property) => {
         this.props.dispatch({ type: 'GET_NAME_COCKTAILS', payload: property })
     }
 
 
     render() {
-        const { classes } = this.props; //need this for cards 
+        const { classes } = this.props; //need this for Material UI 
         let listOrRecipe= <span> hidden </span>
         if (this.props.cocktailsRecipeShowing){
             listOrRecipe = <CocktailRecipe /> 
@@ -68,12 +69,10 @@ export class CocktailsSearch extends Component {
                         
                     </Grid>
                         <Grid item xs={2} className={classes.searchBar} >
-                            {/* <input type="text" placeholder="search" onChange={this.handleChange} /> */}
                             <TextField onChange={this.handleChange} /> <SearchIcon onClick={(event) => this.handleInputClick(event, this.state.inputText)}></SearchIcon>
                            
                         </Grid>
                         <Grid item xs={1} >
-                            {/* <button onClick={(event) => this.handleInputClick(event, this.state.inputText)}>Submit</button> */}
                         </Grid>
                      </Grid>  {/* end first line */}
                      <Grid item xs = {12} container >

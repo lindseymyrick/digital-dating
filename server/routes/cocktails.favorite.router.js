@@ -33,6 +33,7 @@ router.post('/', async (req, res) => {
 
     })
 
+    //updates favorite cocktail recipe
 router.put('/:id', (req, res) => {
     console.log('REQ.PARAMS', req.params.id, 'REQ.BODY', req.body.comments);
     const comments = req.body.comments;
@@ -51,7 +52,7 @@ router.put('/:id', (req, res) => {
 
 
     
-    
+//gets all favorite drink recipes 
 router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "favorite_drink" ORDER BY "drink_name"; `;
     pool.query(queryText)
@@ -63,6 +64,7 @@ router.get('/', (req, res) => {
         })
 });
 
+//gets recipe details when a user selects recipe 
 router.get('/recipe/:id', (req, res) => {
     let queryText = `SELECT "favorite_drink".comments, "favorite_drink".drink_name, "favorite_drink".image_url, 
     "favorite_drink".method, "favorite_drink".id, "favorite_drink_ingredients".ingredient_measurement 
@@ -77,6 +79,8 @@ router.get('/recipe/:id', (req, res) => {
         })
 });
 
+
+//deletes favorite cocktail from database 
 router.delete('/:id', async (req, res) => {
 
     let id = req.params.id;

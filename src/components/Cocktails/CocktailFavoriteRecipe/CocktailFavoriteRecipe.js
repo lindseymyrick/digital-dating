@@ -23,28 +23,27 @@ export class CocktailFavoriteRecipe extends Component {
 
     }
 
-    //conditionally renders edit functionality 
+    //edits favorite drink cocktails
     editComments = () => {
          this.setState({
             ...this.state, 
             editMode: !this.state.editMode
         })
-        // console.log('in editComments',this.state)
     }
 
+    //deletes favorite cocktail 
     handleDelete = (event, property) => {
         console.log('in deleteFavorite', property)
         this.props.dispatch({ type: 'DELETE_FAVORITE_COCKTAIL', payload: property })
     }
 
-    //updates comments display functionality  
+    //sends dispatch to update comments 
     submitComments = () => {
         this.setState({
             ...this.state,
             editMode: !this.state.editMode,
             commentsOnPage: this.state.comments
         })
-        console.log(`this.state.comments`,this.state.comments, `this.state.commentsOnPage`, this.state.commentsOnPage)
         if (this.state.comments === ''){
             console.log('IN EMPTY STRING')
             this.props.dispatch({ type: 'EDIT_FAVORITE_COCKTAIL_COMMENTS', payload: { comments: this.state.commentsOnPage, id: this.props.favoriteCocktailRecipe[0].id } });
@@ -53,6 +52,7 @@ export class CocktailFavoriteRecipe extends Component {
         }
     }
 
+    //sets state for comments
     handleChange = (event) => {
         this.setState({
             ...this.state, 
@@ -65,11 +65,8 @@ export class CocktailFavoriteRecipe extends Component {
         // console.log('in handleClick'); 
         { this.props.dispatch({ type: 'SET_COCKTAILS_FAVORITE_RECIPE_SHOWING' }) }
     }
-
-//   {this.props.favoriteCocktailRecipe[0].comments} 
-
     render() {
-        const { classes } = this.props; //need this for cards 
+        const { classes } = this.props; //need this for Material UI
         let comments = <span> </span>; 
         let editButton = <span> </span>;
         if(this.state.editMode){
@@ -115,7 +112,6 @@ const reduxStateToProps = (reduxState) => {
     }
 }
 
-// export default connect(reduxStateToProps)(CocktailFavoriteRecipe);
 export default connect(reduxStateToProps)(withStyles(styles)(CocktailFavoriteRecipe)); 
 
 

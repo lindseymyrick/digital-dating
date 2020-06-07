@@ -13,9 +13,7 @@ import PropTypes from 'prop-types';
 import styles from '../../ui/Theme';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 
 export class CocktailsFavoritesList extends Component {
    
@@ -36,7 +34,7 @@ export class CocktailsFavoritesList extends Component {
  
 
     render() {
-        const { classes } = this.props; //need this for cards 
+        const { classes } = this.props; //need this for Material UI 
 
         let listOrRecipe = <span> </span>;
         if (this.props.favoriteCocktailsRecipeShowing) {
@@ -48,11 +46,9 @@ export class CocktailsFavoritesList extends Component {
                     <Grid item xs={12} container >
                         <Grid item xs={4} />
                         <Grid item xs={4}>
-                            {/* <Paper elevation={7} > */}
                                 <Typography>
                                     <h1> Favorite Cocktails </h1>
                                 </Typography>
-                            {/* </Paper> */}
                         </Grid>
                         <Grid item xs={4} />
                     </Grid>
@@ -120,7 +116,6 @@ const reduxStateToProps = (reduxState) => {
     }
 }
 
-// export default connect(reduxStateToProps)(CocktailsFavoritesList);
 
 export default connect(reduxStateToProps)(withStyles(styles)(CocktailsFavoritesList)); 
 

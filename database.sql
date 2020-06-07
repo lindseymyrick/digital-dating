@@ -9,28 +9,39 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
-CREATE TABLE "favorite_drink" (
-    "id" INT UNIQUE NOT NULL, 
-    "drink_name" VARCHAR (50),
-    "image_url" VARCHAR (100), 
-    "directions" VARCHAR (500), 
-    "comments" VARCHAR (500)
+ CREATE TABLE "date_rooms" (
+	"id" SERIAL PRIMARY KEY, 
+    "api_url" VARCHAR (200), 
+    "in_use" boolean DEFAULT false, 
 );
 
-CREATE TABLE "ingredients" (
-    "id" SERIAL PRIMARY KEY, 
-    "ingredient_name" VARCHAR (50), 
+ CREATE TABLE "user_rooms" (
+	"id" SERIAL PRIMARY KEY, 
+	"username_user" VARCHAR (100), 
+	"username_partner" VARCHAR (100), 
+	"room_id" INT
+);
 
+CREATE TABLE "favorite_drink" (
+	"id" SERIAL PRIMARY KEY,  
+    "api_id" INT, 
+    "drink_name" VARCHAR (50),
+    "image_url" VARCHAR (100), 
+    "method" VARCHAR (500), 
+    "comments" VARCHAR (500), 
+    "user_id" INT
 );
 
 CREATE TABLE "favorite_drink_ingredients" (
     "id" SERIAL PRIMARY KEY, 
     "recipe_id" INT, 
-    "ingredient_id" INT
+    "ingredient_measurement" VARCHAR (100)
 
-)
+);
 
 CREATE TABLE "deleted_drinks" (
-    "id" INTEGER, 
+	"id" SERIAL PRIMARY KEY, 
+    "api_id" INTEGER, 
     "drink_name" VARCHAR (50)
-)
+);
+

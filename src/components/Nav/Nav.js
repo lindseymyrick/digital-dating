@@ -5,7 +5,6 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 
 
-// function Nav(props) 
 
 export class Nav extends Component {
 

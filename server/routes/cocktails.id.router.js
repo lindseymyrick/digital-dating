@@ -5,7 +5,7 @@ require('dotenv').config();
 
 
 
-//get request to filter based off ingredient
+//get request to Cocktail DB API to get all recipe information by ID after user selects
 router.get('/:id', (req, res) => {
     console.log(' in /cocktail/id GET');
     let id = req.params.id;

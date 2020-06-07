@@ -10,4 +10,4 @@ export class CocktailFavoriteRecipeIngredient extends Component {
     }
 }
 
-export default CocktailFavoriteRecipeIngredient
+export default CocktailFavoriteRecipeIngredient;

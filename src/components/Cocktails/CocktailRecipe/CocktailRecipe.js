@@ -10,7 +10,6 @@ import swal from "sweetalert";
 //Materiaul UI import 
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from "@material-ui/core";
-import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import styles from '../../ui/Theme';
 import Button from '@material-ui/core/Button';
@@ -24,16 +23,7 @@ export class CocktailRecipe extends Component {
      show: false 
     }
 
-    // changeText = (notes) => {
-    //     let text = notes.target.value; 
-    //     this.setState({
-    //         ...this.state, 
-    //         comments: notes 
-    //     })
-
-    //     swal.setActionValue(text);
-    // }
-
+    //add recipe to favorites
     addToFavorites = (event) => {
         console.log('add to favorites');
         swal("Add your comments", {
@@ -47,11 +37,6 @@ export class CocktailRecipe extends Component {
                 })
                  this.props.dispatch({ type: 'ADD_FAVORITE', payload: { cocktailDetails: this.props.cocktailRecipe[0], ingredients_measurement: this.state.ingredients_measurement, comments: value, id: this.props.user.id} })
             });
-        // let promptComments = prompt('Please enter comments');
-        // console.log('promptComments', promptComments);
-        // this.setState ({
-        //     comments: promptComments
-        // });
        
        
     }
@@ -127,15 +112,6 @@ export class CocktailRecipe extends Component {
 
         return (
             <>
-
-            {/* <input 
-            value={this.state.comments}
-            onChange={this.changeText} 
-            /> */}
-
-
-        
-
             <Box className={classes.recipe}>
                 <h1>
                     {this.props.cocktailRecipe[0].strDrink}
@@ -168,27 +144,7 @@ export class CocktailRecipe extends Component {
     }
 }
 
-// We want to retrieve MyInput as a pure DOM node: 
-// let wrapper = document.createElement('div');
-// ReactDOM.render(<CocktailRecipe />, wrapper);
-// let el = wrapper.firstChild;
 
-// swal({
-//     text: "Write something here:",
-//     content: el,
-//     buttons: {
-//         confirm: {
-//             /*
-//              * We need to initialize the value of the button to
-//              * an empty string instead of "true":
-//              */
-//             value: ''
-//         },
-//     },
-// })
-//     .then((value) => {
-//         swal(`You typed: ${value}`);
-//     });
 
 CocktailRecipe.propTypes = { classes: PropTypes.object.isRequired };
 

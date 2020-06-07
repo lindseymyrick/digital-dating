@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-
+//gets all deleted cocktail recipes 
 router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "deleted_drinks";`;
     pool.query(queryText)
@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
         })
 });
 
+//post request to add a new deleted cocktail recipe 
 router.post('/', async (req, res) => {
 
     const id = req.body.id;
